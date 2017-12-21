@@ -47,3 +47,12 @@ Route::get('/ciudades/{ciudad}', function (App\Ciudad $ciudad) {
     return $ciudad->load('gimnasios','gimnastas');
 });
 
+// Obtener todas las gimnastas de un nivel (1-10 inclusivo)
+Route::get('/niveles/{nivel}', function (App\Nivel $nivel) {
+    return $nivel->load('gimnastas');
+});
+
+// Obtener todas las gimnastas de un rango_de_edad_id (ver tabla de rangos)
+Route::get('/rangos/{rango}', function (App\Rango $rango) {
+    return $rango->load('gimnastas');
+});
