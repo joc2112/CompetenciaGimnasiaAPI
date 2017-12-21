@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
 
         // Crea 50 gimnastas de prueba
         // al crear cada gimnasta, tambien se crea un nuevo gimnasio
-        // factory(App\Gimnasta::class, 50)->create();
+        factory(App\Gimnasta::class, 50)->create();
         
         // Crear los Niveles y Rangos de edad
         for($i = 1; $i <= 10; $i++){

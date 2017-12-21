@@ -16,3 +16,15 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+// Obtener todas las gimnastas con toda la informacion
+Route::get('/gimnastas', function () {
+    return App\Gimnasta::with(['Gimnasio.Ciudad','Nivel','Rango'])->get();
+});
+
+// Obtener todas las ciudades con gimnasios y gimnastas
+Route::get('/ciudades', function () {
+    return App\Ciudad::with('gimnasios','gimnastas')->get();
+});
+
+
