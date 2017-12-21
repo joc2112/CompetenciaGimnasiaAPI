@@ -1,0 +1,103 @@
+---Modelo general---
+
+400+ participantes (gimnastas)
+
+4 disciplinas
+
+3 jueces por disciplina
+
+1 capturista por disciplina
+
+1 supervisor general
+
+
+-- Modelo: gimnasta --
+
+- GIMNASTA
+Nombre 
+Gimnasio
+Nivel (1-10)
+Rango de edad (6-7, 8-9,10- 12, 13-15, 16+)
+Ciudad
+Número de registro (asignado por el organizador)
+Panel (opcional, dependiendo del numero de gimnastas registradas)
+
+- GIMNASIO
+Nombre
+Ciudad
+1 gimnasio tiene varias gimnastas
+
+- NIVEL
+Numero (1-10)
+1 nivel tiene varias gimnastas
+
+- RANGO DE EDAD
+Rango/Nombre (6-7, 8-9,10- 12, 13-15, 16+)
+1 rango de edad tiene varias gimnastas
+
+- CIUDAD
+Nombre
+1 ciudad tiene varias gimnastas
+1 ciudad tiene varios gimnasios
+
+-- Modelo: Competencia --
+
+- COMPETENCIA GENERAL
+Fecha
+Numero de participantes
+Lugar
+Patrocinadores
+
+
+- MESA DE JUEZEO 
+Disciplina
+Jueces
+Capturista
+
+- DISCIPLINA
+Nombre (viga, piso, salto, barras)
+
+- JUEZ
+Nombre
+
+- CALIFICACIONES
+
+
+- CALIFICACIONES PROMEDIO
+
+
+- CALIFICACIONES PARTICULAR POR DISCIPLINA POR JUEZ (llenada por el juez)
+Juez
+Gimnasta
+Disciplina
+Dificultad
+Ejecucion
+
+
+- CALIFICACIONES PARTICULAR POR DISCIPLINA PROMEDIO (llenada por el capturista)
+Gimnasta
+Disciplina
+Dificultad - promedio
+Ejecucion - promedio
+All Around (suma de cada calificacion)
+
+-- Modelo: Resultados --
+
+- RESULTADOS INDIVIDUALES (ver CALIFICACIONES PARTICULAR POR DISCIPLINA PROMEDIO)
+
+- RESULTADOS POR GIMNASIO
+Por cada gimnasta en cada gimnacio, sumar sus RESULTADOS INDIVIDUALES
+
+- RESULTADOS TOTALES
+Primeros 8 lugares de cada aparato (viga, piso, barras y salto)
+Lugares 9 al n, para entrega de medalla de participación.
+Primeros 8 lugares all around (suma de las calificaciones de los 4 aparatos)
+
+
+
+
+
+
+
+
+
