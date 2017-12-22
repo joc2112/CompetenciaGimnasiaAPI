@@ -7,6 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class Gimnasta extends Model
 {
     /**
+     * Campos disponibles para Mass Assigment
+     */
+    protected $fillable = ['nombre','apellidos','gimnasio_id','nivel_id','rango_id'];
+
+    /**
      * Obtener el gimnasio de la participante
      */
     public function gimnasio(){

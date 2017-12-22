@@ -17,6 +17,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+/** --- Gimnastas --- */
+
 // Obtener todas las gimnastas con toda la informacion
 Route::get('/gimnastas', function () {
     return App\Gimnasta::with(['Gimnasio.Ciudad','Nivel','Rango'])->get();
@@ -26,6 +28,14 @@ Route::get('/gimnastas', function () {
 Route::get('/gimnastas/{gimnasta}', function (App\Gimnasta $gimnasta) {
     return $gimnasta->load('gimnasio','nivel', 'rango');
 });
+
+// Registrar una nueva gimnasta
+Route::post('/gimnastas', function (Request $request){
+    $gimnasta = App\Gimnasta::firstOrCreate($request->all());
+    return $gimnasta;
+});
+
+/** --- Gimnasios  --- */
 
 // Obtener todas los gimnasios con las gimnastas de cada uno
 Route::get('/gimnasios', function () {
@@ -37,6 +47,8 @@ Route::get('/gimnasios/{gimnasio}', function (App\Gimnasio $gimnasio) {
     return $gimnasio->load('Gimnastas');
 });
 
+/** --- Ciudades  --- */
+
 // Obtener todas las ciudades con gimnasios
 Route::get('/ciudades', function () {
     return App\Ciudad::with('gimnasios')->get();
@@ -47,6 +59,8 @@ Route::get('/ciudades/{ciudad}', function (App\Ciudad $ciudad) {
     return $ciudad->load('gimnasios','gimnastas');
 });
 
+/** --- Niveles y Rangos de Edad  --- */
+
 // Obtener todas las gimnastas de un nivel (1-10 inclusivo)
 Route::get('/niveles/{nivel}', function (App\Nivel $nivel) {
     return $nivel->load('gimnastas');
@@ -56,3 +70,4 @@ Route::get('/niveles/{nivel}', function (App\Nivel $nivel) {
 Route::get('/rangos/{rango}', function (App\Rango $rango) {
     return $rango->load('gimnastas');
 });
+

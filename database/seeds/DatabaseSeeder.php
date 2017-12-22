@@ -58,5 +58,34 @@ class DatabaseSeeder extends Seeder
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
 
+        // Disciplinas (viga, piso, salto, barras)
+        DB::table('disciplinas')->insert([
+            'nombre' => "viga",
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+        ]); 
+        DB::table('disciplinas')->insert([
+            'nombre' => "piso",
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+        ]);
+        DB::table('disciplinas')->insert([
+            'nombre' => "salto",
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+        ]);
+        DB::table('disciplinas')->insert([
+            'nombre' => "barras",
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+        ]);
+
+        // Crear mesas de juicio
+        factory(App\MesaDeJuicio::class, 20)->create()->each(function($mesa) {
+            factory(App\Juez::class, 4)->make()->each(function($juez) use ($mesa) {
+                 $mesa->jueces()->save($juez);
+            });
+        });
+
     }
 }
