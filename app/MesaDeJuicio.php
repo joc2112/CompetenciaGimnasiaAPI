@@ -17,16 +17,16 @@ class MesaDeJuicio extends Model
     }    
     
     /**
-    * Obtener la capturista de esta mesa
-    */
+     * Obtener la capturista a la cual esta mesa pertence
+     */
     public function capturista(){
-        return $this->hasOne('App\Capturista');
+        return $this->belongsTo('App\Capturista');
     }
     
     /**
     * Obtener la disciplina de esta mesa
     */
     public function disciplina(){
-        return $this->hasOne('App\Disciplina');
+        return $this->belongsTo('App\Disciplina');
     } 
 }

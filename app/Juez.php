@@ -12,7 +12,7 @@ class Juez extends Model
      * que mucho jueces pueden estar en diferentes
      * mesas, y una mesa tiene varios jueces.
      */
-    public function mesa_de_juicio()
+    public function mesas_de_juicio()
     {
         return $this->belongsToMany('App\MesaDeJuicio', 'juez_mesa_juicio');
     }

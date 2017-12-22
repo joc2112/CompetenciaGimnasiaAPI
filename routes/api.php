@@ -71,3 +71,35 @@ Route::get('/rangos/{rango}', function (App\Rango $rango) {
     return $rango->load('gimnastas');
 });
 
+/** ------- COMPETENCIA  ------- */
+
+
+/** --- Jueces --- */
+
+// Obtener todos los jueces con las mesas a las que pertenecen
+Route::get('/jueces', function () {
+    return App\Juez::with('mesas_de_juicio')->get();
+});
+
+/** --- Capturistas --- */
+
+// Obtener todas las capturistas con sus mesas
+Route::get('/capturistas', function () {
+    return App\Capturista::with('mesas_de_juicio')->get();
+});
+
+
+/** --- Mesas de Juicio --- */
+
+// Obtener todas las mesas con sus jueces, disciplina y capturista
+Route::get('/mesas', function () {
+    return App\MesaDeJuicio::with('jueces', 'disciplina', 'capturista')->get();
+});
+
+/** --- Disciplinas --- */
+
+// Obtener todas las mesas de una disciplina en especifico
+Route::get('/disciplinas/{disciplina}', function (App\Disciplina $disciplina) {
+    return $disciplina->load('mesas_de_juicio');
+});
+
