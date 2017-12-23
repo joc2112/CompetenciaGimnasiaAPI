@@ -7,6 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Juez extends Model
 {
     /**
+     * Campos disponibles para Mass Assigment
+     */
+    protected $fillable = ['nombre','apellidos'];
+    /**
      * Obtener las mesas del juez
      * Esta es una relacion Many to Many, puesto
      * que mucho jueces pueden estar en diferentes

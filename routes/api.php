@@ -47,6 +47,13 @@ Route::get('/gimnasios/{gimnasio}', function (App\Gimnasio $gimnasio) {
     return $gimnasio->load('Gimnastas');
 });
 
+// Registrar una nueva gimnasta
+Route::post('/gimnasios', function (Request $request){
+    $gimnasio = App\Gimnasio::firstOrCreate($request->all());
+    return $gimnasio;
+});
+
+
 /** --- Ciudades  --- */
 
 // Obtener todas las ciudades con gimnasios
@@ -81,6 +88,12 @@ Route::get('/jueces', function () {
     return App\Juez::with('mesas_de_juicio')->get();
 });
 
+// Registrar un nuevo juez
+Route::post('/jueces', function (Request $request){
+    $juez = App\Juez::firstOrCreate($request->all());
+    return $juez;
+});
+
 /** --- Capturistas --- */
 
 // Obtener todas las capturistas con sus mesas
@@ -88,6 +101,11 @@ Route::get('/capturistas', function () {
     return App\Capturista::with('mesas_de_juicio')->get();
 });
 
+// Registrar una nueva capturista
+Route::post('/capturistas', function (Request $request){
+    $capturista = App\Capturista::firstOrCreate($request->all());
+    return $capturista;
+});
 
 /** --- Mesas de Juicio --- */
 
@@ -95,6 +113,7 @@ Route::get('/capturistas', function () {
 Route::get('/mesas', function () {
     return App\MesaDeJuicio::with('jueces', 'disciplina', 'capturista')->get();
 });
+
 
 /** --- Disciplinas --- */
 
