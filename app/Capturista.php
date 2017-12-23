@@ -14,7 +14,7 @@ class Capturista extends Model
     /**
      * Obtener las mesa de la capturista
      */
-    public function mesa_de_juicio()
+    public function mesas_de_juicio()
     {
         return $this->hasMany('App\MesaDeJuicio');
     }

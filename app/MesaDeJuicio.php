@@ -7,6 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class MesaDeJuicio extends Model
 {
     /**
+     * Campos disponibles para Mass Assigment
+     */
+    protected $fillable = ['disciplina_id','capturista_id'];
+
+    /**
      * Obtener todos los jueces de esta mesa.
      * Esta es una relacion Many to Many, puesto
      * que mucho jueces pueden estar en diferentes

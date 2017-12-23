@@ -114,6 +114,11 @@ Route::get('/mesas', function () {
     return App\MesaDeJuicio::with('jueces', 'disciplina', 'capturista')->get();
 });
 
+// Registrar una nueva mesa de juicio (Solo registra la disciplina y la capturista)
+Route::post('/mesas', function (Request $request){
+    $mesa = App\MesaDeJuicio::firstOrCreate($request->all());
+    return $mesa;
+});
 
 /** --- Disciplinas --- */
 
