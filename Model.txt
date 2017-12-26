@@ -29,6 +29,7 @@ Ciudad
 
 - NIVEL
 Numero (1-10)
+Base de Calificacion
 1 nivel tiene varias gimnastas
 
 - RANGO DE EDAD
@@ -68,20 +69,11 @@ Nombre (viga, piso, salto, barras)
 - CALIFICACIONES PROMEDIO
 
 
-- CALIFICACIONES PARTICULAR POR DISCIPLINA POR JUEZ (llenada por el juez)
+- CALIFICACIONES PARTICULAR POR DISCIPLINA POR JUEZ (llenada por la capturista)
 Juez
 Gimnasta
 Disciplina
-Dificultad
-Ejecucion
-
-
-- CALIFICACIONES PARTICULAR POR DISCIPLINA PROMEDIO (llenada por el capturista)
-Gimnasta
-Disciplina
-Dificultad - promedio
-Ejecucion - promedio
-All Around (suma de cada calificacion)
+Calificacion Final
 
 -- Modelo: Resultados --
 

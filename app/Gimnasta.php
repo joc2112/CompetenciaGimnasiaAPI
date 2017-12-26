@@ -31,4 +31,11 @@ class Gimnasta extends Model
     public function rango(){
         return $this->belongsTo('App\Rango');
     }
+
+    /**
+     * Obtener el Rango de Edad
+     */
+    public function calificaciones(){
+        return $this->hasMany('App\Calificacion');
+    }    
 }

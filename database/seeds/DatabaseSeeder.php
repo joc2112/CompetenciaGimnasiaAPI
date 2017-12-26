@@ -24,11 +24,28 @@ class DatabaseSeeder extends Seeder
         
         // Crear los Niveles y Rangos de edad
         for($i = 1; $i <= 10; $i++){
-            DB::table('nivels')->insert([
-                'nivel' => $i,
-                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-                'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
-            ]);
+            if($i < 6){
+                DB::table('nivels')->insert([
+                    'nivel' => $i,
+                    'base' => 10,
+                    'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                    'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+                ]);
+            }else if($i == 6){
+                DB::table('nivels')->insert([
+                    'nivel' => $i,
+                    'base' => 16,
+                    'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                    'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+                ]);
+            }else{
+                DB::table('nivels')->insert([
+                    'nivel' => $i,
+                    'base' => 50,// No hay una base definida para niveles arriba de 6
+                    'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                    'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+                ]);
+            }
         }
         // Rangos son: 6-7, 8-9, 10-12, 13-15, 16+
         DB::table('rangos')->insert([
@@ -86,6 +103,8 @@ class DatabaseSeeder extends Seeder
                  $mesa->jueces()->save($juez);
             });
         });
+        // Crear calificaciones
+        factory(App\Calificacion::class, 100)->create();
 
     }
 }
