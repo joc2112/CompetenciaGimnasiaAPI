@@ -18,8 +18,10 @@ class CreateGimnastasTable extends Migration
             $table->string('nombre');
             $table->string('apellidos');
             $table->integer('gimnasio_id');
+            $table->date('fecha_nacimiento');
             $table->integer('nivel_id');
             $table->integer('rango_id');
+            $table->integer('competencia_general_id');
             $table->timestamps();
         });
     }

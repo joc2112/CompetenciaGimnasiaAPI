@@ -30,6 +30,7 @@ Ciudad
 - NIVEL
 Numero (1-10)
 Base de Calificacion
+
 1 nivel tiene varias gimnastas
 
 - RANGO DE EDAD

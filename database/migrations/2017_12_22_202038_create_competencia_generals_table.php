@@ -16,7 +16,6 @@ class CreateCompetenciaGeneralsTable extends Migration
         Schema::create('competencia_generals', function (Blueprint $table) {
             $table->increments('id');
             $table->date('fecha');
-            $table->integer('numero_participantes');
             $table->string('lugar');
             $table->timestamps();
         });

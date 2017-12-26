@@ -33,9 +33,15 @@ class Gimnasta extends Model
     }
 
     /**
-     * Obtener el Rango de Edad
+     * Obtener todas las calificaciones de esta gimnasta
      */
     public function calificaciones(){
         return $this->hasMany('App\Calificacion');
+    }
+    /**
+     * Obtener la competencia de la gimnasta
+     */
+    public function competencia(){
+        return $this->belongsTo('App\CompetenciaGeneral');
     }
 }
