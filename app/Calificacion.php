@@ -39,5 +39,12 @@ class Calificacion extends Model
         $base = $gimnasta->nivel->base;
         return $faker->randomFloat($nbMaxDecimals = 2, $min = 1, $max = $base);
     }
+    /**
+     * Checa que la calificacion dada sea valida.
+     * La validez depende del rango del nivel de la gimnasta 
+     */
+    public static function isValidCalificacion(Gimnasta $gimnasta, $calificacion){
+        return $calificacion >= 0 && $calificacion < $gimnasta->nivel->base;
+    }
         
 }

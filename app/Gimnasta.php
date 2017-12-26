@@ -37,5 +37,5 @@ class Gimnasta extends Model
      */
     public function calificaciones(){
         return $this->hasMany('App\Calificacion');
-    }    
+    }
 }
