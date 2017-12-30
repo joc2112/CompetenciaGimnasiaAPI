@@ -8,6 +8,13 @@ use Faker as Faker;
 
 class Calificacion extends Model
 {
+    
+    /**
+     * Campos disponibles para Mass Assigment
+     */
+    protected $fillable = ['juez_id', 'gimnasta_id', 'disciplina_id',
+                         'calificacion', 'gimnasta'];
+        
     /**
      * Obtener el juez de esta calificacion
      */
@@ -45,6 +52,20 @@ class Calificacion extends Model
      */
     public static function isValidCalificacion(Gimnasta $gimnasta, $calificacion){
         return $calificacion >= 0 && $calificacion < $gimnasta->nivel->base;
+    }
+
+    /**
+     * Genera el promedio de una lista de calificaciones de una disciplina
+     * @param $calificacion: La lista de objectos de la clase Calificacion
+     * @return: La calificacion promedio
+     */
+    public static function promedio($calificaciones){
+        if(sizeof($calificaciones) <= 0) return 0;
+        $suma = 0;
+        foreach ($calificaciones as $calificacion) {
+            $suma += $calificacion->calificacion;
+        }
+        return $suma / sizeof($calificaciones);
     }
         
 }

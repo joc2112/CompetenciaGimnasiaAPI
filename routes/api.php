@@ -127,3 +127,37 @@ Route::get('/disciplinas/{disciplina}', function (App\Disciplina $disciplina) {
     return $disciplina->load('mesas_de_juicio');
 });
 
+/** --- Calificaciones --- */
+
+// Obtener todas las calificaciones sin agrupar promedios
+Route::get('/calificaciones', function () {
+    return App\Calificacion::with('gimnasta')->get();
+});
+
+
+// Obtener todas las calificaciones de una gimnasta sin agrupar promedios
+Route::get('/calificaciones/{gimnasta}', function (App\Gimnasta $gimnasta) {
+    return $gimnasta->calificaciones;
+});
+
+
+// Insertar una nueva calificacion de una gimnasta
+Route::post('/calificaciones', function (Request $request) {
+    $calificacion = App\Calificacion::firstOrCreate($request->all());
+    return $calificacion;
+});
+
+// Obtener todas las calificaciones promedio de una gimnasta
+Route::get('/calificaciones/{gimnasta}/promedio', function (App\Gimnasta $gimnasta) {
+    // Primero se obtienen todas las calificaciones agrupadas por disciplinas
+    $calificaciones_disciplina = $gimnasta->calificaciones->groupBy('disciplina_id');
+
+    // Resultados de cada disciplina
+    $resultados = ["1" => null, "2" => null, "3" => null, "4" => null]; 
+    foreach($calificaciones_disciplina as $disciplina_id => $calificaciones){
+        $resultados[$disciplina_id] = App\Calificacion::promedio($calificaciones);
+    }
+    // Regresar los datos de la gimnasta junto con las calificaciones promedio
+    return ["gimnasta" => $gimnasta, "promedios" => $resultados];
+});
+
