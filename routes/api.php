@@ -157,7 +157,7 @@ Route::get('/calificaciones/{gimnasta}/promedio', function (App\Gimnasta $gimnas
     foreach($calificaciones_disciplina as $disciplina_id => $calificaciones){
         $resultados[$disciplina_id] = App\Calificacion::promedio($calificaciones);
     }
-    // Regresar los datos de la gimnasta junto con las calificaciones promedio
+    // Regresar los datos de la gimnasta junto con las calificaciones
     return ["gimnasta" => $gimnasta, "promedios" => $resultados];
 });
 
