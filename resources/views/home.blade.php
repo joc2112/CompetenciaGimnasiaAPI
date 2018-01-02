@@ -1,64 +1,23 @@
-@extends('layout')
+@extends('layouts.app')
 
 @section('content')
-
-
-<div class="container-fluid">
+<div class="container">
     <div class="row">
-        <main class="col-sm-12 pt-3">
-          <h1>Menu</h1>
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">Dashboard</div>
 
-          <section class="row text-center placeholders">
-            <div class="col-6 col-sm-3 placeholder">
-              
-              <h4>Label</h4>
-              <div class="text-muted">Something else</div>
-            </div>
-            <div class="col-6 col-sm-3 placeholder">
-              <img src="data:image/gif;base64,R0lGODlhAQABAIABAADcgwAAACwAAAAAAQABAAACAkQBADs=" width="200" height="200" class="img-fluid rounded-circle" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-            <div class="col-6 col-sm-3 placeholder">
-              <img src="data:image/gif;base64,R0lGODlhAQABAIABAAJ12AAAACwAAAAAAQABAAACAkQBADs=" width="200" height="200" class="img-fluid rounded-circle" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-            <div class="col-6 col-sm-3 placeholder">
-              <img src="data:image/gif;base64,R0lGODlhAQABAIABAADcgwAAACwAAAAAAQABAAACAkQBADs=" width="200" height="200" class="img-fluid rounded-circle" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-          </section>
-        </main>
-        <main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
-          <h1>Dashboard</h1>
+                <div class="panel-body">
+                    @if (session('status'))
+                        <div class="alert alert-success">
+                            {{ session('status') }}
+                        </div>
+                    @endif
 
-          <section class="row text-center placeholders">
-            <div class="col-6 col-sm-3 placeholder">
-              <img src="data:image/gif;base64,R0lGODlhAQABAIABAAJ12AAAACwAAAAAAQABAAACAkQBADs=" width="200" height="200" class="img-fluid rounded-circle" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <div class="text-muted">Something else</div>
+                    You are logged in!
+                </div>
             </div>
-            <div class="col-6 col-sm-3 placeholder">
-              <img src="data:image/gif;base64,R0lGODlhAQABAIABAADcgwAAACwAAAAAAQABAAACAkQBADs=" width="200" height="200" class="img-fluid rounded-circle" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-            <div class="col-6 col-sm-3 placeholder">
-              <img src="data:image/gif;base64,R0lGODlhAQABAIABAAJ12AAAACwAAAAAAQABAAACAkQBADs=" width="200" height="200" class="img-fluid rounded-circle" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-            <div class="col-6 col-sm-3 placeholder">
-              <img src="data:image/gif;base64,R0lGODlhAQABAIABAADcgwAAACwAAAAAAQABAAACAkQBADs=" width="200" height="200" class="img-fluid rounded-circle" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-          </section>
-        </main>
+        </div>
     </div>
 </div>
-          
-
 @endsection
