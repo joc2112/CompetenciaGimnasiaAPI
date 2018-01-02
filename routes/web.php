@@ -14,3 +14,9 @@
 Route::get('/', function () {
     return view('home');
 });
+
+Route::group(['prefix' => 'admin', 'middleware' => ['admin'], 'namespace' => 'Admin'], function()
+{
+   CRUD::resource('tag', 'TagCrudController');
+   CRUD::resource('gimnasta', 'GimnastaController');
+});

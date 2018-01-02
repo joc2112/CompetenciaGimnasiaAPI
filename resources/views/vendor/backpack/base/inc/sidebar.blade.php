@@ -20,6 +20,7 @@
           <!-- ==== Recommended place for admin menu items ==== -->
           <!-- ================================================ -->
           <li><a href="{{ backpack_url('dashboard') }}"><i class="fa fa-dashboard"></i> <span>{{ trans('backpack::base.dashboard') }}</span></a></li>
+          <li><a href="{{ backpack_url('tag') }}"><i class="fa fa-tags"></i> <span>Tags</span></a></li>
 
 
           <!-- ======================================= -->
