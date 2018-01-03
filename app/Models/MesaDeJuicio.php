@@ -20,20 +20,20 @@ class MesaDeJuicio extends Model
      * mesas, y una mesa tiene varios jueces.
      */
     public function jueces(){
-        return $this->belongsToMany('App\Juez','juez_mesa_juicio');
+        return $this->belongsToMany('App\Models\Juez','juez_mesa_juicio');
     }    
     
     /**
      * Obtener la capturista a la cual esta mesa pertence
      */
     public function capturista(){
-        return $this->belongsTo('App\Capturista');
+        return $this->belongsTo('App\Models\Capturista');
     }
     
     /**
     * Obtener la disciplina de esta mesa
     */
     public function disciplina(){
-        return $this->belongsTo('App\Disciplina');
+        return $this->belongsTo('App\Models\Disciplina');
     } 
 }

@@ -20,6 +20,6 @@ class Juez extends Model
      */
     public function mesas_de_juicio()
     {
-        return $this->belongsToMany('App\MesaDeJuicio', 'juez_mesa_juicio');
+        return $this->belongsToMany('App\Models\MesaDeJuicio', 'juez_mesa_juicio');
     }
 }

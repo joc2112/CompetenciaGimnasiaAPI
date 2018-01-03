@@ -35,7 +35,38 @@ class MesaDeJuicioCrudController extends CrudController
         // $this->crud->addFields($array_of_arrays, 'update/create/both');
         // $this->crud->removeField('name', 'update/create/both');
         // $this->crud->removeFields($array_of_names, 'update/create/both');
+        
+        // Relacionar la disciplina de la mesa
+        $this->crud->setColumnDetails('disciplina_id',[
+            'label' => "Aparato", // Table column heading
+            'type' => "select",
+            'name' => 'disciplina_id', // the db column for the foreign key
+            'entity' => 'disciplina', // the method that defines the relationship in your Model
+            'attribute' => 'nombre', // foreign key attribute that is shown to user
+            'model' => "App\Models\Disciplina" // foreign key model
+        ]);
 
+        // Relacionar El nombre de la capturista
+        $this->crud->setColumnDetails('capturista_id',[
+            'label' => "Capturista", // Table column heading
+            'type' => "select",
+            'name' => 'capturista_id', // the db column for the foreign key
+            'entity' => 'capturista', // the method that defines the relationship in your Model
+            'attribute' => 'nombre', // foreign key attribute that is shown to user
+            'model' => "App\Models\Capturista" // foreign key model
+        ]);        
+
+        // Relacionar la lista de jueces
+        $this->crud->addColumn([
+            // n-n relationship (with pivot table)
+            'label' => "Jueces", // Table column heading
+            'type' => "select_multiple",
+            'name' => 'jueces', // the method that defines the relationship in your Model
+            'entity' => 'jueces', // the method that defines the relationship in your Model
+            'attribute' => "nombre", // foreign key attribute that is shown to user
+            'model' => "App\Models\Juez", // foreign key model
+        ]);
+        
         // ------ CRUD COLUMNS
         // $this->crud->addColumn(); // add a single column, at the end of the stack
         // $this->crud->addColumns(); // add multiple columns, at the end of the stack
