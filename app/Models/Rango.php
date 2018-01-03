@@ -1,11 +1,13 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Backpack\CRUD\CrudTrait;
 
 class Rango extends Model
 {
+    use CrudTrait;
     /**
      * Obtener la lista de gimnastas de este rango de edad
      */

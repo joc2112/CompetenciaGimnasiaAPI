@@ -11,7 +11,7 @@ class Gimnasta extends Model
     /**
      * Campos disponibles para Mass Assigment
      */
-    protected $fillable = ['nombre','apellidos','gimnasio_id','nivel_id','rango_id'];
+    protected $fillable = ['nombre','apellidos','competencia_general_id','fecha_nacimiento','gimnasio_id','nivel_id','rango_id'];
 
     /**
      * Obtener el gimnasio de la participante

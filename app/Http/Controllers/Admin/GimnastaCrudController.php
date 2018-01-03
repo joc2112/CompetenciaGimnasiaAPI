@@ -28,10 +28,66 @@ class GimnastaCrudController extends CrudController
         |--------------------------------------------------------------------------
         */
 
-        $this->crud->setFromDb();
+        
 
         // ------ CRUD FIELDS
-        // $this->crud->addField($options, 'update/create/both');
+
+        // Year de la competencia
+        $this->crud->addField([  // Select
+            'label' => "Competencia",
+            'type' => 'select',
+            'name' => 'competencia_general_id', // the db column for the foreign key
+            'entity' => 'competencia', // the method that defines the relationship in your Model
+            'attribute' => 'fecha', // foreign key attribute that is shown to user
+            'model' => "App\Models\CompetenciaGeneral" // foreign key model
+        ], 'update/create/both');
+
+        // Campos automaticos, se generan automaticamente dependiendo de como este la table de bd
+        $this->crud->setFromDb();
+
+        // Gimnasio
+        $this->crud->addField([  // Select con busqueda
+            'label' => "Gimnasio",
+            'type' => 'select2',
+            'name' => 'gimnasio_id', // the db column for the foreign key
+            'entity' => 'gimnasio', // the method that defines the relationship in your Model
+            'attribute' => 'nombre', // foreign key attribute that is shown to user
+            'model' => "App\Models\Gimnasio" // foreign key model
+        ], 'update/create/both');
+
+        // Fecha de nacimiento
+        $this->crud->addField([   // date picker
+            'name' => 'fecha_nacimiento',
+            'type' => 'date_picker',
+            'label' => 'Fecha de Nacimiento',
+            // optional:
+            'date_picker_options' => [
+               'todayBtn' => false,
+               'format' => 'dd-mm-yyyy',
+               'language' => 'es'
+            ],
+         ], 'update/create/both');
+        
+        // Nivel
+        $this->crud->addField([  // Select
+            'label' => "Nivel",
+            'type' => 'select2',
+            'name' => 'nivel_id', // the db column for the foreign key
+            'entity' => 'nivel', // the method that defines the relationship in your Model
+            'attribute' => 'nivel', // foreign key attribute that is shown to user
+            'model' => "App\Models\Nivel" // foreign key model
+        ], 'update/create/both');
+
+        // Rango de edad
+        $this->crud->addField([  // Select
+            'label' => "Rango de Edad",
+            'type' => 'select2',
+            'name' => 'rango_id', // the db column for the foreign key
+            'entity' => 'rango', // the method that defines the relationship in your Model
+            'attribute' => 'rango', // foreign key attribute that is shown to user
+            'model' => "App\Models\Rango" // foreign key model
+        ], 'update/create/both');
+
         // $this->crud->addFields($array_of_arrays, 'update/create/both');
         // $this->crud->removeFields($array_of_names, 'update/create/both');
 
