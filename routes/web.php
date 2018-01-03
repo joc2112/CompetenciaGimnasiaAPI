@@ -19,6 +19,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin'], 'namespace' => 'Ad
 {
    CRUD::resource('tag', 'TagCrudController');
    CRUD::resource('gimnasta', 'GimnastaCrudController');
+   CRUD::resource('calificacion', 'CalificacionCrudController');
    CRUD::resource('gimnasio', 'GimnasioCrudController');
    CRUD::resource('ciudad', 'CiudadCrudController');
    CRUD::resource('juez', 'JuezCrudController');

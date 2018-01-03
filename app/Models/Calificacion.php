@@ -1,14 +1,14 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Faker as Faker;
-
+use Backpack\CRUD\CrudTrait;
 
 class Calificacion extends Model
 {
-    
+    use CrudTrait;
     /**
      * Campos disponibles para Mass Assigment
      */
