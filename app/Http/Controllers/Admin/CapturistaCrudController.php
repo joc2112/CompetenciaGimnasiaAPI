@@ -5,10 +5,10 @@ namespace App\Http\Controllers\Admin;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 
 // VALIDATION: change the requests to match your own file names if you need form validation
-use App\Http\Requests\CiudadRequest as StoreRequest;
-use App\Http\Requests\CiudadRequest as UpdateRequest;
+use App\Http\Requests\CapturistaRequest as StoreRequest;
+use App\Http\Requests\CapturistaRequest as UpdateRequest;
 
-class CiudadController extends CrudController
+class CapturistaCrudController extends CrudController
 {
     public function setup()
     {
@@ -18,9 +18,9 @@ class CiudadController extends CrudController
         | BASIC CRUD INFORMATION
         |--------------------------------------------------------------------------
         */
-        $this->crud->setModel('App\Models\Ciudad');
-        $this->crud->setRoute(config('backpack.base.route_prefix') . '/ciudad');
-        $this->crud->setEntityNameStrings('ciudad', 'ciudades');
+        $this->crud->setModel('App\Models\Capturista');
+        $this->crud->setRoute(config('backpack.base.route_prefix') . '/capturista');
+        $this->crud->setEntityNameStrings('capturista', 'capturistas');
 
         /*
         |--------------------------------------------------------------------------

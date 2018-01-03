@@ -21,6 +21,13 @@
           <!-- ================================================ -->
           <li><a href="{{ backpack_url('dashboard') }}"><i class="fa fa-dashboard"></i> <span>{{ trans('backpack::base.dashboard') }}</span></a></li>
           <li><a href="{{ backpack_url('tag') }}"><i class="fa fa-tags"></i> <span>Tags</span></a></li>
+          <li><a href="{{ backpack_url('gimnasta') }}"><i class="fa fa-person"></i> <span>Gimnastas</span></a></li>
+          <li><a href="{{ backpack_url('gimnasio') }}"><i class="fa fa-home"></i> <span>Gimnacios</span></a></li>
+          <li><a href="{{ backpack_url('ciudad') }}"><i class="fa fa-location"></i> <span>Ciudades</span></a></li>
+          <li><a href="{{ backpack_url('juez') }}"><i class="fa fa-hammer"></i> <span>Jueces</span></a></li>
+          <li><a href="{{ backpack_url('mesa') }}"><i class="fa fa-table"></i> <span>Mesas de Juicio</span></a></li>
+          <li><a href="{{ backpack_url('capturista') }}"><i class="fa fa-computer"></i> <span>Capturistas</span></a></li>
+
 
 
           <!-- ======================================= -->

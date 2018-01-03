@@ -8,7 +8,7 @@ use Backpack\CRUD\app\Http\Controllers\CrudController;
 use App\Http\Requests\CiudadRequest as StoreRequest;
 use App\Http\Requests\CiudadRequest as UpdateRequest;
 
-class CiudadController extends CrudController
+class CiudadCrudController extends CrudController
 {
     public function setup()
     {
@@ -20,7 +20,7 @@ class CiudadController extends CrudController
         */
         $this->crud->setModel('App\Models\Ciudad');
         $this->crud->setRoute(config('backpack.base.route_prefix') . '/ciudad');
-        $this->crud->setEntityNameStrings('ciudad', 'ciudades');
+        $this->crud->setEntityNameStrings('ciudad', 'ciudads');
 
         /*
         |--------------------------------------------------------------------------

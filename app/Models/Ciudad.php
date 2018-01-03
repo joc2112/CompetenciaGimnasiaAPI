@@ -1,12 +1,13 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Backpack\CRUD\CrudTrait;
 
 class Ciudad extends Model
 {
-    
+    use CrudTrait;
     /**
      * Obtener la lista de gimnasios de esta ciudad
      */

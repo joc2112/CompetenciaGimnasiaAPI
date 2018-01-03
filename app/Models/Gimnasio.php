@@ -1,11 +1,13 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Backpack\CRUD\CrudTrait;
 
 class Gimnasio extends Model
 {
+    use CrudTrait;
     /**
      * Campos disponibles para Mass Assigment
      */

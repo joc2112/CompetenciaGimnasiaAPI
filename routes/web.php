@@ -18,5 +18,10 @@ Route::get('/', function () {
 Route::group(['prefix' => 'admin', 'middleware' => ['admin'], 'namespace' => 'Admin'], function()
 {
    CRUD::resource('tag', 'TagCrudController');
-   CRUD::resource('gimnasta', 'GimnastaController');
+   CRUD::resource('gimnasta', 'GimnastaCrudController');
+   CRUD::resource('gimnasio', 'GimnasioCrudController');
+   CRUD::resource('ciudad', 'CiudadCrudController');
+   CRUD::resource('juez', 'JuezCrudController');
+   CRUD::resource('mesa', 'MesaDeJuicioCrudController');
+   CRUD::resource('capturista', 'CapturistaCrudController');
 });
