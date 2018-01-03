@@ -12,6 +12,6 @@ class CompetenciaGeneral extends Model
      * Obtener todas las gimnastas de esta competencia
      */
     public function gimnastas(){
-        return $this->hasMany('App\Gimnasta');
+        return $this->hasMany('App\Models\Gimnasta');
     }
 }

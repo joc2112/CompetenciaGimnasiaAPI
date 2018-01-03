@@ -92,7 +92,56 @@ class GimnastaCrudController extends CrudController
         // $this->crud->removeFields($array_of_names, 'update/create/both');
 
         // ------ CRUD COLUMNS
-        // $this->crud->addColumn(); // add a single column, at the end of the stack
+
+        // Relacionar los gimnasios
+        $this->crud->setColumnDetails('gimnasio_id',[
+            'label' => "Gimnasio", // Table column heading
+            'type' => 'select',
+            'name' => 'gimnasio_id', // the db column for the foreign key
+            'entity' => 'gimnasio', // the method that defines the relationship in your Model
+            'attribute' => 'nombre', // foreign key attribute that is shown to user
+            'model' => "App\Models\Gimnasio" // foreign key model
+        ]);
+        
+        // Relacionar los rangos de Edad
+        $this->crud->setColumnDetails('rango_id',[
+            'label' => "Rango de edad", // Table column heading
+            'type' => 'select',
+            'name' => 'rango_id', // the db column for the foreign key
+            'entity' => 'rango', // the method that defines the relationship in your Model
+            'attribute' => 'rango', // foreign key attribute that is shown to user
+            'model' => "App\Models\Rango" // foreign key model
+        ]);
+
+        // Relacionar los niveles
+        $this->crud->setColumnDetails('nivel_id',[
+            'label' => "Nivel", // Table column heading
+            'type' => 'select',
+            'name' => 'nivel_id', // the db column for the foreign key
+            'entity' => 'nivel', // the method that defines the relationship in your Model
+            'attribute' => 'nivel', // foreign key attribute that is shown to user
+            'model' => "App\Models\Nivel" // foreign key model
+        ]);
+        
+        // Relacionar la fecha de la competencia
+        // $this->crud->setColumnDetails('competencia_general_id',[
+        //     'label' => "Competencia", // Table column heading
+        //     'type' => 'select',
+        //     'name' => 'competencia_general_id', // the db column for the foreign key
+        //     'entity' => 'competencia', // the method that defines the relationship in your Model
+        //     'attribute' => 'id', // foreign key attribute that is shown to user
+        //     'model' => "App\Models\CompetenciaGeneral" // foreign key model
+        // ]);
+        $this->crud->enableExportButtons();
+        // $this->crud->addField([  // Select
+        //     'label' => "Competencia",
+        //     'type' => 'select',
+        //     'name' => 'competencia_general_id', // the db column for the foreign key
+        //     'entity' => 'competencia', // the method that defines the relationship in your Model
+        //     'attribute' => 'fecha', // foreign key attribute that is shown to user
+        //     'model' => "App\Models\CompetenciaGeneral" // foreign key model
+        // ], 'update/create/both');
+        // $this->crud->setColumnDetails('gimnasio_id', ['attribute' => 'value']);
         // $this->crud->addColumns(); // add multiple columns, at the end of the stack
         // $this->crud->removeColumn('column_name'); // remove a column from the stack
         // $this->crud->removeColumns(['column_name_1', 'column_name_2']); // remove an array of columns from the stack
@@ -131,7 +180,7 @@ class GimnastaCrudController extends CrudController
         // Please note the drawbacks of this though:
         // - 1-n and n-n columns are not searchable
         // - date and datetime columns won't be sortable anymore
-        // $this->crud->enableAjaxTable();
+        $this->crud->enableAjaxTable();
 
         // ------ DATATABLE EXPORT BUTTONS
         // Show export to PDF, CSV, XLS and Print buttons on the table view.

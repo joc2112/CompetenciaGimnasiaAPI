@@ -13,6 +13,6 @@ class Nivel extends Model
      */
     public function gimnastas()
     {
-        return $this->hasMany('App\Gimnasta');
+        return $this->hasMany('App\Models\Gimnasta');
     }
 }
