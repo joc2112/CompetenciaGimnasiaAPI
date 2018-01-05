@@ -31,6 +31,17 @@ class GimnasioCrudController extends CrudController
         $this->crud->setFromDb();
 
         // ------ CRUD FIELDS
+
+        // Relacionar la ciudad con el gym
+        $this->crud->addField([
+            'label' => "Ciudad", // Table column heading
+            'type' => 'select2',
+            'name' => 'ciudad_id', // the db column for the foreign key
+            'entity' => 'ciudad', // the method that defines the relationship in your Model
+            'attribute' => 'ciudad', // foreign key attribute that is shown to user
+            'model' => "App\Models\Ciudad" // foreign key model
+        ], 'update/create/both');
+        
         // $this->crud->addField($options, 'update/create/both');
         // $this->crud->addFields($array_of_arrays, 'update/create/both');
         // $this->crud->removeField('name', 'update/create/both');

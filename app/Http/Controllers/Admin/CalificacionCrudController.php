@@ -36,7 +36,7 @@ class CalificacionCrudController extends CrudController
         // Relacionar la gimnasta con la calificacion
         $this->crud->addField([
             'label' => "Gimnasta", // Table column heading
-            'type' => 'select',
+            'type' => 'select2',
             'name' => 'gimnasta_id', // the db column for the foreign key
             'entity' => 'gimnasta', // the method that defines the relationship in your Model
             'attribute' => 'nombre', // foreign key attribute that is shown to user
@@ -46,7 +46,7 @@ class CalificacionCrudController extends CrudController
         // Relacionar el juez con la calificacion
         $this->crud->addField([
             'label' => "Juez", // Table column heading
-            'type' => 'select',
+            'type' => 'select2',
             'name' => 'juez_id', // the db column for the foreign key
             'entity' => 'juez', // the method that defines the relationship in your Model
             'attribute' => 'nombre', // foreign key attribute that is shown to user
