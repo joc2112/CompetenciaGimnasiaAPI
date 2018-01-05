@@ -32,6 +32,36 @@ class CalificacionCrudController extends CrudController
 
         // ------ CRUD FIELDS
         // $this->crud->addField($options, 'update/create/both');
+
+        // Relacionar la gimnasta con la calificacion
+        $this->crud->addField([
+            'label' => "Gimnasta", // Table column heading
+            'type' => 'select',
+            'name' => 'gimnasta_id', // the db column for the foreign key
+            'entity' => 'gimnasta', // the method that defines the relationship in your Model
+            'attribute' => 'nombre', // foreign key attribute that is shown to user
+            'model' => "App\Models\Gimnasta" // foreign key model
+        ],'update/create/both');
+
+        // Relacionar el juez con la calificacion
+        $this->crud->addField([
+            'label' => "Juez", // Table column heading
+            'type' => 'select',
+            'name' => 'juez_id', // the db column for the foreign key
+            'entity' => 'juez', // the method that defines the relationship in your Model
+            'attribute' => 'nombre', // foreign key attribute that is shown to user
+            'model' => "App\Models\Juez" // foreign key model
+        ],'update/create/both');
+
+        // Relacionar la disciplina con la calificacion
+        $this->crud->addField([
+            'label' => "Aparato", // Table column heading
+            'type' => 'select',
+            'name' => 'disciplina_id', // the db column for the foreign key
+            'entity' => 'disciplina', // the method that defines the relationship in your Model
+            'attribute' => 'nombre', // foreign key attribute that is shown to user
+            'model' => "App\Models\Disciplina" // foreign key model
+        ],'update/create/both');
         // $this->crud->addFields($array_of_arrays, 'update/create/both');
         // $this->crud->removeField('name', 'update/create/both');
         // $this->crud->removeFields($array_of_names, 'update/create/both');
