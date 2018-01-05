@@ -13,14 +13,14 @@ class Ciudad extends Model
      */
     public function gimnasios()
     {
-        return $this->hasMany('App\Gimnasio');
+        return $this->hasMany('App\Models\Gimnasio');
     }
     /**
      * Obtener la lista de participantes de una ciudad, a traves de los gimnasios
      */
     public function gimnastas()
     {
-        return $this->hasManyThrough('App\Gimnasta', 'App\Gimnasio');
+        return $this->hasManyThrough('App\Models\Gimnasta', 'App\Models\Gimnasio');
     }
 
 }

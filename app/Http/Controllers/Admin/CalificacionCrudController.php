@@ -20,7 +20,7 @@ class CalificacionCrudController extends CrudController
         */
         $this->crud->setModel('App\Models\Calificacion');
         $this->crud->setRoute(config('backpack.base.route_prefix') . '/calificacion');
-        $this->crud->setEntityNameStrings('calificacion', 'calificacions');
+        $this->crud->setEntityNameStrings('calificacion', 'calificaciones');
 
         /*
         |--------------------------------------------------------------------------
@@ -37,6 +37,37 @@ class CalificacionCrudController extends CrudController
         // $this->crud->removeFields($array_of_names, 'update/create/both');
 
         // ------ CRUD COLUMNS
+
+        // Relacionar la gimnasta con la calificacion
+        $this->crud->setColumnDetails('gimnasta_id',[
+            'label' => "Gimnasta", // Table column heading
+            'type' => 'select',
+            'name' => 'gimnasta_id', // the db column for the foreign key
+            'entity' => 'gimnasta', // the method that defines the relationship in your Model
+            'attribute' => 'nombre', // foreign key attribute that is shown to user
+            'model' => "App\Models\Gimnasta" // foreign key model
+        ]);
+
+        // Relacionar el juez con la calificacion
+        $this->crud->setColumnDetails('juez_id',[
+            'label' => "Juez", // Table column heading
+            'type' => 'select',
+            'name' => 'juez_id', // the db column for the foreign key
+            'entity' => 'juez', // the method that defines the relationship in your Model
+            'attribute' => 'nombre', // foreign key attribute that is shown to user
+            'model' => "App\Models\Juez" // foreign key model
+        ]);
+
+        // Relacionar la disciplina con la calificacion
+        $this->crud->setColumnDetails('disciplina_id',[
+            'label' => "Aparato", // Table column heading
+            'type' => 'select',
+            'name' => 'disciplina_id', // the db column for the foreign key
+            'entity' => 'disciplina', // the method that defines the relationship in your Model
+            'attribute' => 'nombre', // foreign key attribute that is shown to user
+            'model' => "App\Models\Disciplina" // foreign key model
+        ]);
+
         // $this->crud->addColumn(); // add a single column, at the end of the stack
         // $this->crud->addColumns(); // add multiple columns, at the end of the stack
         // $this->crud->removeColumn('column_name'); // remove a column from the stack
@@ -81,7 +112,7 @@ class CalificacionCrudController extends CrudController
         // ------ DATATABLE EXPORT BUTTONS
         // Show export to PDF, CSV, XLS and Print buttons on the table view.
         // Does not work well with AJAX datatables.
-        // $this->crud->enableExportButtons();
+        $this->crud->enableExportButtons();
 
         // ------ ADVANCED QUERIES
         // $this->crud->addClause('active');

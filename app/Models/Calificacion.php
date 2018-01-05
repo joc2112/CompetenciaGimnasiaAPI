@@ -19,21 +19,21 @@ class Calificacion extends Model
      * Obtener el juez de esta calificacion
      */
     public function juez(){
-        return $this->belongsTo('App\Juez');
+        return $this->belongsTo('App\Models\Juez');
     }
 
     /**
      * Obtener la gimnasta de esta calificacion
      */
     public function gimnasta(){
-        return $this->belongsTo('App\Gimnasta');
+        return $this->belongsTo('App\Models\Gimnasta');
     }
     
     /**
      * Obtener la disciplina de la calificacion
      */
     public function disciplina(){
-        return $this->belongsTo('App\Disciplina');
+        return $this->belongsTo('App\Models\Disciplina');
     }
 
     /**

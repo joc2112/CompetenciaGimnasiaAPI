@@ -37,6 +37,20 @@ class GimnasioCrudController extends CrudController
         // $this->crud->removeFields($array_of_names, 'update/create/both');
 
         // ------ CRUD COLUMNS
+
+
+        // Relacionar la ciudad con el gym
+        $this->crud->setColumnDetails('ciudad_id',[
+            'label' => "Ciudad", // Table column heading
+            'type' => 'select',
+            'name' => 'ciudad_id', // the db column for the foreign key
+            'entity' => 'ciudad', // the method that defines the relationship in your Model
+            'attribute' => 'ciudad', // foreign key attribute that is shown to user
+            'model' => "App\Models\Ciudad" // foreign key model
+        ]);
+
+
+        
         // $this->crud->addColumn(); // add a single column, at the end of the stack
         // $this->crud->addColumns(); // add multiple columns, at the end of the stack
         // $this->crud->removeColumn('column_name'); // remove a column from the stack
@@ -81,7 +95,7 @@ class GimnasioCrudController extends CrudController
         // ------ DATATABLE EXPORT BUTTONS
         // Show export to PDF, CSV, XLS and Print buttons on the table view.
         // Does not work well with AJAX datatables.
-        // $this->crud->enableExportButtons();
+        $this->crud->enableExportButtons();
 
         // ------ ADVANCED QUERIES
         // $this->crud->addClause('active');

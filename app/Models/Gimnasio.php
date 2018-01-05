@@ -19,7 +19,7 @@ class Gimnasio extends Model
      */
     public function gimnastas()
     {
-        return $this->hasMany('App\Gimnasta');
+        return $this->hasMany('App\Models\Gimnasta');
     }
 
     /**
@@ -27,6 +27,6 @@ class Gimnasio extends Model
      */
     public function ciudad()
     {
-        return $this->belongsTo('App\Ciudad');
+        return $this->belongsTo('App\Models\Ciudad');
     }
 }
