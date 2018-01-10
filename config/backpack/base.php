@@ -16,7 +16,7 @@ return [
 
     // Menu logos
     'logo_lg'   => '<b>Gimnasia</b>2018',
-    'logo_mini' => '<b>G</b>2018',
+    'logo_mini' => '<b>G</b>',
 
     // Developer or company name. Shown in footer.
     'developer_name' => 'Kevin Bastian',
