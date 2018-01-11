@@ -31,7 +31,44 @@ class MesaDeJuicioCrudController extends CrudController
         $this->crud->setFromDb();
 
         // ------ CRUD FIELDS
-        // $this->crud->addField($options, 'update/create/both');
+        // Relacionar la disciplina de la mesa
+        $this->crud->addField([
+            'label' => "Aparato", // Table column heading
+            'type' => "select",
+            'name' => 'disciplina_id', // the db column for the foreign key
+            'entity' => 'disciplina', // the method that defines the relationship in your Model
+            'attribute' => 'nombre', // foreign key attribute that is shown to user
+            'model' => "App\Models\Disciplina" // foreign key model
+        ], 'update/create/both');
+
+        $this->crud->addField([
+            'label' => "Capturista", // Table column heading
+            'type' => "select2",
+            'name' => 'capturista_id', // the db column for the foreign key
+            'entity' => 'capturista', // the method that defines the relationship in your Model
+            'attribute' => 'nombre', // foreign key attribute that is shown to user
+            'model' => "App\Models\Capturista" // foreign key model
+        ], 'update/create/both');
+
+
+        $this->crud->addField([
+            'label' => "Capturista", // Table column heading
+            'type' => "select2",
+            'name' => 'capturista_id', // the db column for the foreign key
+            'entity' => 'capturista', // the method that defines the relationship in your Model
+            'attribute' => 'nombre', // foreign key attribute that is shown to user
+            'model' => "App\Models\Capturista" // foreign key model
+        ], 'update/create/both');
+
+        $this->crud->addField([
+            // n-n relationship (with pivot table)
+            'label' => "Jueces", // Table column heading
+            'type' => "select2_multiple",
+            'name' => 'jueces', // the method that defines the relationship in your Model
+            'entity' => 'jueces', // the method that defines the relationship in your Model
+            'attribute' => "nombre", // foreign key attribute that is shown to user
+            'model' => "App\Models\Juez", // foreign key model
+        ]);
         // $this->crud->addFields($array_of_arrays, 'update/create/both');
         // $this->crud->removeField('name', 'update/create/both');
         // $this->crud->removeFields($array_of_names, 'update/create/both');
