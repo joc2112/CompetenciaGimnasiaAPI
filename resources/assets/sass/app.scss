@@ -2,15 +2,15 @@
 // Fonts
 @import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
 
+// Variables
+@import "variables";
+
+// Bootstrap
+@import "~bootstrap-sass/assets/stylesheets/bootstrap";
 
 /*
  * Base structure
  */
-
-/* Move down content because we have a fixed navbar that is 50px tall */
-body {
-    padding-top: 50px;
-  }
   
   /*
    * Typography
