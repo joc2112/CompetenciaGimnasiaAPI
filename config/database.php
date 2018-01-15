@@ -65,7 +65,7 @@ return [
         ],
 
         'pgsql_heroku' => [
-            'driver' => 'pgsql_heroku',
+            'driver' => 'pgsql',
             'host'     => $host,
             'database' => $database,
             'username' => $username,
