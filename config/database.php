@@ -1,5 +1,15 @@
 <?php
 
+/**
+ * Production Database Vars
+ */
+$url = parse_url(env("DATABASE_URL",env('DB_HOST', '127.0.0.1')));
+
+$host = $url["host"];
+$username = $url["user"];
+$password = $url["pass"];
+$database = substr($url["path"], 1);
+
 return [
 
     /*
@@ -52,6 +62,19 @@ return [
             'prefix' => '',
             'strict' => true,
             'engine' => null,
+        ],
+
+        'pgsql_heroku' => [
+            'driver' => 'pgsql_heroku',
+            'host'     => $host,
+            'database' => $database,
+            'username' => $username,
+            'password' => $password,
+            'charset'  => 'utf8',
+            'prefix'   => '',
+            'schema'   => 'public',
+            'port' => env('DB_PORT', '5432'),
+            'sslmode' => 'prefer',
         ],
 
         'pgsql' => [
