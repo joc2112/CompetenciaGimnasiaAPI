@@ -30,10 +30,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin'], 'namespace' => 'Ad
 Auth::routes();
 
 Route::get('/' , ['middleware' => 'auth', function () {
-    return redirect('/home');
+    return redirect('/capturar');
 }]);
 
 Route::group(['middleware' => ['auth'], 'namespace' => 'Capturista'], function(){
-    Route::get('/home', 'CapturaController@index')->name('home');
+    Route::get('/capturar', 'CapturaController@index')->name('home');
 });
 
