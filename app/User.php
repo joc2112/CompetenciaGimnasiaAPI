@@ -1,6 +1,9 @@
 <?php
 
 namespace App;
+// Roles traits for the CRUDs and other sites
+use Backpack\CRUD\CrudTrait;
+use Spatie\Permission\Traits\HasRoles;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -9,6 +12,9 @@ use Backpack\Base\app\Notifications\ResetPasswordNotification as ResetPasswordNo
 class User extends Authenticatable
 {
     use Notifiable;
+    // Roles traits
+    use CrudTrait;
+    use HasRoles;
 
     /**
      * The attributes that are mass assignable.

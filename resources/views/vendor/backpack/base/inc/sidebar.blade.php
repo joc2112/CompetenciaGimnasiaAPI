@@ -24,9 +24,12 @@
           <li><a href="{{ backpack_url('calificacion') }}"><i class="fa fa-check"></i> <span>Calificaciones</span></a></li>
           <li><a href="{{ backpack_url('gimnasio') }}"><i class="fa fa-home"></i> <span>Gimnacios</span></a></li>
           <li><a href="{{ backpack_url('ciudad') }}"><i class="fa fa-globe"></i> <span>Ciudades</span></a></li>
-          <li><a href="{{ backpack_url('juez') }}"><i class="fa fa-users"></i> <span>Jueces</span></a></li>
+          <li><a href="{{ backpack_url('juez') }}"><i class="fa fa-pencil-square-o"></i> <span>Jueces</span></a></li>
           <li><a href="{{ backpack_url('mesa') }}"><i class="fa fa-table"></i> <span>Mesas de Juicio</span></a></li>
           <li><a href="{{ backpack_url('capturista') }}"><i class="fa fa-laptop"></i> <span>Capturistas</span></a></li>
+          <li><a href="{{ backpack_url('user') }}"><i class="fa fa-user"></i> <span>Usuarios</span></a></li>
+          <li><a href="{{ backpack_url('role') }}"><i class="fa fa-group"></i> <span>Roles</span></a></li>
+          <li><a href="{{ backpack_url('permission') }}"><i class="fa fa-key"></i> <span>Permisos</span></a></li>
 
 
 
