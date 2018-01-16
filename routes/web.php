@@ -33,4 +33,7 @@ Route::get('/' , ['middleware' => 'auth', function () {
     return redirect('/home');
 }]);
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::group(['middleware' => ['auth'], 'namespace' => 'Capturista'], function(){
+    Route::get('/home', 'HomeController@index')->name('home');
+});
+
