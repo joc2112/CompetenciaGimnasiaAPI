@@ -23,6 +23,6 @@ class CapturaController extends Controller
      */
     public function index()
     {
-        return view('capturista.home');
+        return view('capturista.captura');
     }
 }
