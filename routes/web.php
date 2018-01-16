@@ -34,6 +34,6 @@ Route::get('/' , ['middleware' => 'auth', function () {
 }]);
 
 Route::group(['middleware' => ['auth'], 'namespace' => 'Capturista'], function(){
-    Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/home', 'CapturaController@index')->name('home');
 });
 
