@@ -26,6 +26,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin'], 'namespace' => 'Ad
    CRUD::resource('mesa', 'MesaDeJuicioCrudController');
    CRUD::resource('capturista', 'CapturistaCrudController');
 });
+
 Auth::routes();
+
+Route::get('/' , ['middleware' => 'auth', function () {
+    return redirect('/home');
+}]);
 
 Route::get('/home', 'HomeController@index')->name('home');

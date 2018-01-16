@@ -20,7 +20,7 @@ class JuezCrudController extends CrudController
         */
         $this->crud->setModel('App\Models\Juez');
         $this->crud->setRoute(config('backpack.base.route_prefix') . '/juez');
-        $this->crud->setEntityNameStrings('juez', 'juezs');
+        $this->crud->setEntityNameStrings('juez', 'jueces');
 
         /*
         |--------------------------------------------------------------------------
