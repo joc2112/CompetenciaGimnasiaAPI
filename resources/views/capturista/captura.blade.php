@@ -7,6 +7,7 @@
     <h1> Captura de Calificaciones </h3>
     <div class="box">
       <div class="box-header with-border">
+        <!-- Jueces y Aparato -->
         <div class="row">
           <div class="col-xs-12 col-md-8">
             <div class="row">
@@ -54,6 +55,7 @@
           </div>
         </div>
         <hr>
+        <!-- Participante/Gimansta -->
         <div class="row">
             <div class="col-xs-12">
               <h3>Participante</h3>
@@ -64,6 +66,7 @@
             </div>
         </div>
         <hr>
+        <!-- Calificaciones -->
         <div class="row">
             <div class="col-xs-12">
             <table class="table table-striped">
@@ -87,6 +90,10 @@
               </tbody>
             </table>
             </div>
+        </div>
+        <div id="app">
+          <ExampleComponent>
+          </ExampleComponent>
         </div>
       </div>
     </div>
