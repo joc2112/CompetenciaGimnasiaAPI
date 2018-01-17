@@ -959,53 +959,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 9 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(39)
-/* script */
-var __vue_script__ = __webpack_require__(40)
-/* template */
-var __vue_template__ = __webpack_require__(41)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/assets/js/components/ExampleComponent.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-7168fb6a", Component.options)
-  } else {
-    hotAPI.reload("data-v-7168fb6a", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
+/* 9 */,
 /* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1019,8 +973,8 @@ module.exports = __webpack_require__(42);
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_ExampleComponent_vue__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_ExampleComponent_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_ExampleComponent_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_CapturaComponent_vue__ = __webpack_require__(53);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_CapturaComponent_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_CapturaComponent_vue__);
 
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -1038,11 +992,11 @@ window.Vue = __webpack_require__(36);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example-component', __webpack_require__(9));
+Vue.component('captura-component', __webpack_require__(53));
 
 var app = new Vue({
   el: '#app',
-  components: { examplecomponent: __WEBPACK_IMPORTED_MODULE_0__components_ExampleComponent_vue___default.a }
+  components: { capturacomponent: __WEBPACK_IMPORTED_MODULE_0__components_CapturaComponent_vue___default.a }
 });
 
 /***/ }),
@@ -42935,7 +42889,72 @@ module.exports = function normalizeComponent (
 
 
 /***/ }),
-/* 40 */
+/* 40 */,
+/* 41 */,
+/* 42 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 43 */,
+/* 44 */,
+/* 45 */,
+/* 46 */,
+/* 47 */,
+/* 48 */,
+/* 49 */,
+/* 50 */,
+/* 51 */,
+/* 52 */,
+/* 53 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(39)
+/* script */
+var __vue_script__ = __webpack_require__(54)
+/* template */
+var __vue_template__ = __webpack_require__(55)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/CapturaComponent.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-46e2f6dc", Component.options)
+  } else {
+    hotAPI.reload("data-v-46e2f6dc", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 54 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -42956,44 +42975,260 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            aparatos: ["Piso", "Barra", "Salto", "Viga"],
+            gimnastas: [{
+                name: "Gimnasta 1 Perez",
+                gym: "Gym super pro"
+            }, {
+                name: "Gimnasta 2 Sosa",
+                gym: "Gym nada pro"
+            }, {
+                name: "Wada duu Perez",
+                gym: "Gym Desconocido"
+            }],
+            jueces: [{
+                name: "Pablito Perez",
+                calificacion: 13.2
+            }, {
+                name: "Pablito Segundo",
+                calificacion: 11.9
+            }, {
+                name: "Tercero Perez",
+                calificacion: 9.1
+            }, {
+                name: "Tercero Perez",
+                calificacion: 9.1
+            }, {
+                name: "Tercero Perez",
+                calificacion: 9.1
+            }, {
+                name: "Tercero Perez",
+                calificacion: 9.1
+            }, {
+                name: "Tercero Perez",
+                calificacion: 9.1
+            }]
+        };
+    },
     mounted: function mounted() {
-        console.log('Component mounted.');
+        console.log('Componenente de Captura listo.');
     }
 });
 
 /***/ }),
-/* 41 */
+/* 55 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "container-fluid" }, [
+    _c("h1", [_vm._v(" Captura de Calificaciones ")]),
+    _vm._v(" "),
+    _c("div", { staticClass: "box" }, [
+      _c("div", { staticClass: "box-header with-border" }, [
+        _c("div", { staticClass: "row" }, [
+          _c(
+            "div",
+            { staticClass: "col-xs-12 col-md-8" },
+            [
+              _vm._m(0),
+              _vm._v(" "),
+              _vm._l(_vm.jueces, function(juez) {
+                return _c("div", { staticClass: "row" }, [
+                  _c("div", { staticClass: "col-xs-10" }, [
+                    _c("span", [_vm._v(" " + _vm._s(juez.name))])
+                  ]),
+                  _vm._v(" "),
+                  _vm._m(1, true)
+                ])
+              })
+            ],
+            2
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-xs-6 col-md-4" }, [
+            _c("h3", [_vm._v("Aparato")]),
+            _vm._v(" "),
+            _c(
+              "select",
+              { staticClass: "form-control" },
+              _vm._l(_vm.aparatos, function(aparato) {
+                return _c("option", [_vm._v(_vm._s(aparato))])
+              })
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c("hr"),
+        _vm._v(" "),
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-xs-12" }, [
+            _c("h3", [_vm._v("Participante")]),
+            _vm._v(" "),
+            _c(
+              "select",
+              { staticClass: "form-control" },
+              _vm._l(_vm.gimnastas, function(gimnasta) {
+                return _c("option", [
+                  _vm._v(_vm._s(gimnasta.name) + " - " + _vm._s(gimnasta.gym))
+                ])
+              })
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c("hr"),
+        _vm._v(" "),
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-xs-12" }, [
+            _c("table", { staticClass: "table table-striped" }, [
+              _vm._m(2),
+              _vm._v(" "),
+              _c(
+                "tbody",
+                _vm._l(_vm.jueces, function(juez) {
+                  return _c("tr", [
+                    _c("td", [_vm._v(_vm._s(juez.name))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(juez.calificacion))])
+                  ])
+                })
+              )
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { attrs: { id: "app" } })
+      ])
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-md-8 col-md-offset-2" }, [
-          _c("div", { staticClass: "panel panel-default" }, [
-            _c("div", { staticClass: "panel-heading" }, [
-              _vm._v("Example Component")
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "panel-body" }, [
-              _vm._v(
-                "\n                    I'm an example component!\n                "
-              )
-            ])
-          ])
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-xs-6" }, [_c("h3", [_vm._v("Jueces")])]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-xs-2" }, [
+        _c("div", { staticClass: "box-header with-border" }, [
+          _c(
+            "a",
+            {
+              staticClass: "btn btn-success ladda-button",
+              attrs: {
+                href: "http://localhost:8000/admin/gimnasta/create",
+                "data-style": "zoom-in"
+              }
+            },
+            [
+              _c("span", { staticClass: "ladda-label" }, [
+                _c("i", { staticClass: "fa fa-plus" }),
+                _vm._v(" Añadir Juez")
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c("div", {
+            staticClass: "pull-right text-right",
+            attrs: { id: "datatable_button_stack" }
+          })
         ])
       ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-xs-2" }, [
+      _c(
+        "a",
+        {
+          staticClass: "btn btn-danger btn-xs ladda-button",
+          attrs: {
+            href: "http://localhost:8000/admin/gimnasta/create",
+            "data-style": "zoom-in"
+          }
+        },
+        [
+          _c("span", { staticClass: "ladda-label" }, [
+            _c("i", { staticClass: "fa fa-minus" })
+          ])
+        ]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("th", [_vm._v("Juez")]),
+      _vm._v(" "),
+      _c("th", [_vm._v("Calificacion")])
     ])
   }
 ]
@@ -43002,15 +43237,9 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-7168fb6a", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-46e2f6dc", module.exports)
   }
 }
-
-/***/ }),
-/* 42 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);

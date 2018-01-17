@@ -15,9 +15,9 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example-component', require('./components/ExampleComponent.vue'));
-import ExampleComponent from './components/ExampleComponent.vue';
+Vue.component('captura-component', require('./components/CapturaComponent.vue'));
+import CapturaComponent from './components/CapturaComponent.vue';
 const app = new Vue({
     el: '#app',
-    components: {examplecomponent: ExampleComponent}
+    components: {capturacomponent: CapturaComponent}
 });

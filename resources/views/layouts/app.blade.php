@@ -113,7 +113,9 @@
 
 
     @yield('before_scripts')
-
+    <!-- Custom scripts and Vue Components -->
+    <script src="{{ mix('js/app.js') }}"></script>
+    
     <!-- jQuery 2.2.3 -->
     <script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
     <script>window.jQuery || document.write('<script src="{{ asset('vendor/adminlte') }}/plugins/jQuery/jQuery-2.2.3.min.js"><\/script>')</script>
@@ -123,7 +125,6 @@
     <script src="{{ asset('vendor/adminlte') }}/plugins/slimScroll/jquery.slimscroll.min.js"></script>
     <script src="{{ asset('vendor/adminlte') }}/plugins/fastclick/fastclick.js"></script>
     <script src="{{ asset('vendor/adminlte') }}/dist/js/app.min.js"></script>
-    <script src="js/app.js"></script>
 
     <!-- page script -->
     <script type="text/javascript">
@@ -173,8 +174,7 @@
     @include('backpack::inc.alerts')
 
     @yield('after_scripts')
-
     <!-- JavaScripts -->
-    {{-- <script src="{{ mix('js/app.js') }}"></script> --}}
+    
 </body>
 </html>
