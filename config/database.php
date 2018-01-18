@@ -4,7 +4,7 @@
  * Production Database Vars
  */
 $url = parse_url(env("DATABASE_URL"));
-if($url){
+if($url && isset($url["host"])){
     $host = $url["host"];
     $username = $url["user"];
     $password = $url["pass"];
@@ -65,7 +65,18 @@ return [
             'strict' => true,
             'engine' => null,
         ],
-
+        'mysql_heroku' => [
+            'driver' => 'mysql',
+            'host'     => $host,
+            'database' => $database,
+            'username' => $username,
+            'password' => $password,
+            'charset'  => 'utf8',
+            'prefix'   => '',
+            'schema'   => 'public',
+            'port' => env('DB_PORT', '5432'),
+            'sslmode' => 'prefer',
+        ],
         'pgsql_heroku' => [
             'driver' => 'pgsql',
             'host'     => $host,
