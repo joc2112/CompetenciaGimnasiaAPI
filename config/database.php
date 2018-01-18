@@ -74,7 +74,7 @@ return [
             'charset'  => 'utf8',
             'prefix'   => '',
             'schema'   => 'public',
-            'port' => env('DB_PORT', '5432'),
+            'port' => env('DB_PORT', '3306'),
             'sslmode' => 'prefer',
         ],
         'pgsql_heroku' => [
