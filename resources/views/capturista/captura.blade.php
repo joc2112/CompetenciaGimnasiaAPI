@@ -4,8 +4,8 @@
 
 
 <div id="app">
-  <CapturaComponent>
-  </CapturaComponent>
+  <captura-component>
+  </captura-component>
 </div>
           
 

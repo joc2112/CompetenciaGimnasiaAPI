@@ -19,7 +19,7 @@
                     </div>
                     <div class="row" v-for="juez in jueces">
                         <div class="col-xs-10">
-                            <span> {{ juez.name }}</span>
+                            <span> {{ juez.nombre }}</span>
                         </div>
                         <div class="col-xs-2">
                             <a href="http://localhost:8000/admin/gimnasta/create" class="btn btn-danger btn-xs ladda-button" data-style="zoom-in"><span class="ladda-label"><i class="fa fa-minus"></i></span></a>
@@ -29,7 +29,7 @@
                 <div class="col-xs-6 col-md-4">
                     <h3>Aparato</h3>
                     <select class="form-control">
-                    <option v-for="aparato in aparatos">{{aparato}}</option>
+                    <option v-for="aparato in aparatos" v-model="aparato_selected">{{aparato.nombre}}</option>
                     </select>
                 </div>
                 </div>
@@ -38,9 +38,9 @@
                 <div class="row">
                     <div class="col-xs-12">
                     <h3>Participante</h3>
-                    <select class="form-control">
-                        <option v-for="gimnasta in gimnastas">{{gimnasta.name}} - {{gimnasta.gym}}</option>
-                    </select>
+                    
+                    <v-select v-model="gimnasta_selected" :options="gimnastas" label="nombre">
+                    </v-select>
                     </div>
                 </div>
                 <hr>
@@ -53,16 +53,13 @@
                         <th>Calificacion</th>
                     </thead>
                     <tbody>
-                        <tr v-for="juez in jueces">
-                        <td>{{juez.name}}</td>
-                        <td>{{juez.calificacion}}</td>
+                        <tr v-for="calificacion in calificaciones">
+                        <td>{{calificacion.juez.nombre}}</td>
+                        <td>{{calificacion.calificacion}}</td>
                         </tr>
                     </tbody>
                     </table>
                     </div>
-                </div>
-                <div id="app">
-
                 </div>
             </div>
         </div>
@@ -70,63 +67,48 @@
 </template>
 
 <script>
+    import axios from 'axios'
     export default {
         data() {
             return {
-                aparatos: [
-                    "Piso",
-                    "Barra",
-                    "Salto",
-                    "Viga"
-                ],
-                gimnastas: [
-                    {
-                        name: "Gimnasta 1 Perez",
-                        gym: "Gym super pro"
-                    },
-                    {
-                        name: "Gimnasta 2 Sosa",
-                        gym: "Gym nada pro"
-                    },
-                    {
-                        name: "Wada duu Perez",
-                        gym: "Gym Desconocido"
-                    },
-                ],
-                jueces: [
-                    {
-                        name: "Pablito Perez",
-                        calificacion: 13.2
-                    },
-                    {
-                        name: "Pablito Segundo",
-                        calificacion: 11.9
-                    },
-                    {
-                        name: "Tercero Perez",
-                        calificacion: 9.1
-                    },
-                    {
-                        name: "Tercero Perez",
-                        calificacion: 9.1
-                    },
-                    {
-                        name: "Tercero Perez",
-                        calificacion: 9.1
-                    },
-                    {
-                        name: "Tercero Perez",
-                        calificacion: 9.1
-                    },
-                    {
-                        name: "Tercero Perez",
-                        calificacion: 9.1
-                    }
-                ]
+                aparatos: [],
+                gimnastas: [],
+                gimnasta_selected: null,
+                aparato_selected: null,
+                calificaciones: [],
+                jueces: [],
+                
             }
         },
         mounted() {
+            // Listar las gimnastas
+            axios.get('/api/gimnastas')
+                .then(response => this.gimnastas = response.data)
+                .catch(error => console.log(error))
+            // Listar los jueces
+            axios.get('/api/jueces')
+                .then(response => this.jueces = response.data)
+                .catch(error => console.log(error))
+            // Listar los aparatos
+            axios.get('/api/disciplinas')
+                .then(response => this.aparatos = response.data)
+                .catch(error => console.log(error))
+            
             console.log('Componenente de Captura listo.')
+        },
+        methods: {
+        },
+        watch:{
+            // Cada vez que se seleccione una nueva gimnasta se obtienen sus calificaciones
+            gimnasta_selected(){
+                console.log("Cambioo de gimnasta");
+                // Obtener y filtrar calificaciones solo del aparato seleccionado
+                axios.get('/api/calificaciones/' + this.gimnasta_selected.id)
+                    .then(response => this.calificaciones = response.data)
+                    .catch(error => console.log(error))
+                // TODO FILTRAR POR APARATO SELECCIONADO
+            }
         }
+        
     }
 </script>

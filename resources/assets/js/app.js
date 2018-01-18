@@ -14,10 +14,14 @@ window.Vue = require('vue');
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
-
-Vue.component('captura-component', require('./components/CapturaComponent.vue'));
+// Componente de captura de calificaciones
 import CapturaComponent from './components/CapturaComponent.vue';
+Vue.component('captura-component', CapturaComponent);
+
+// Componente del vue select
+import vSelect from 'vue-select'
+Vue.component('v-select', vSelect)
+
 const app = new Vue({
-    el: '#app',
-    components: {capturacomponent: CapturaComponent}
+    el: '#app'
 });
