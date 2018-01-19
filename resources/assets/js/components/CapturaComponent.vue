@@ -26,7 +26,7 @@
                             <span> {{ juez.nombre }}</span>
                         </div>
                         <div class="col-xs-2">
-                            <a href="#" class="btn btn-danger btn-xs ladda-button" data-style="zoom-in"><span class="ladda-label"><i class="fa fa-minus"></i></span></a>
+                            <a href="#" @click="removeJuez(juez)" class="btn btn-danger btn-xs ladda-button" data-style="zoom-in"><span class="ladda-label"><i class="fa fa-minus"></i></span></a>
                         </div>
                     </div>
                 </div>
@@ -82,7 +82,7 @@
                         <span> {{ juez.nombre }}</span>
                     </div>
                     <div class="col-xs-2">
-                        <a href="#" class="btn btn-danger btn-xs ladda-button" data-style="zoom-in"><span class="ladda-label"><i class="fa fa-minus"></i></span></a>
+                        <a href="#" @click="removeJuez(juez)" class="btn btn-danger btn-xs ladda-button" data-style="zoom-in"><span class="ladda-label"><i class="fa fa-minus"></i></span></a>
                     </div>
                 </div>
                 <hr>
@@ -136,6 +136,16 @@
                 if(this.juez_selected != null){
                     this.jueces_activos.push(this.juez_selected);
                 }
+            },
+            removeJuez(juez){
+                console.log(juez);
+                // Find juez in array of current 
+                var index = this.jueces_activos.indexOf(juez);
+                console.log(index);
+                if(index > -1){
+                    this.jueces_activos.splice(index, 1);
+                }
+
             }
         },
         watch:{

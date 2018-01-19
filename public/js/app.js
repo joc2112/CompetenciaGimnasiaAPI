@@ -43095,6 +43095,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             if (this.juez_selected != null) {
                 this.jueces_activos.push(this.juez_selected);
             }
+        },
+        removeJuez: function removeJuez(juez) {
+            console.log(juez);
+            // Find juez in array of current 
+            var index = this.jueces_activos.indexOf(juez);
+            console.log(index);
+            if (index > -1) {
+                this.jueces_activos.splice(index, 1);
+            }
         }
     },
     watch: {
@@ -43141,7 +43150,21 @@ var render = function() {
                     _c("span", [_vm._v(" " + _vm._s(juez.nombre))])
                   ]),
                   _vm._v(" "),
-                  _vm._m(1, true)
+                  _c("div", { staticClass: "col-xs-2" }, [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "btn btn-danger btn-xs ladda-button",
+                        attrs: { href: "#", "data-style": "zoom-in" },
+                        on: {
+                          click: function($event) {
+                            _vm.removeJuez(juez)
+                          }
+                        }
+                      },
+                      [_vm._m(1, true)]
+                    )
+                  ])
                 ])
               })
             ],
@@ -43249,7 +43272,21 @@ var render = function() {
                         _c("span", [_vm._v(" " + _vm._s(juez.nombre))])
                       ]),
                       _vm._v(" "),
-                      _vm._m(4, true)
+                      _c("div", { staticClass: "col-xs-2" }, [
+                        _c(
+                          "a",
+                          {
+                            staticClass: "btn btn-danger btn-xs ladda-button",
+                            attrs: { href: "#", "data-style": "zoom-in" },
+                            on: {
+                              click: function($event) {
+                                _vm.removeJuez(juez)
+                              }
+                            }
+                          },
+                          [_vm._m(4, true)]
+                        )
+                      ])
                     ])
                   }),
                   _vm._v(" "),
@@ -43336,19 +43373,8 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-xs-2" }, [
-      _c(
-        "a",
-        {
-          staticClass: "btn btn-danger btn-xs ladda-button",
-          attrs: { href: "#", "data-style": "zoom-in" }
-        },
-        [
-          _c("span", { staticClass: "ladda-label" }, [
-            _c("i", { staticClass: "fa fa-minus" })
-          ])
-        ]
-      )
+    return _c("span", { staticClass: "ladda-label" }, [
+      _c("i", { staticClass: "fa fa-minus" })
     ])
   },
   function() {
@@ -43388,19 +43414,8 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-xs-2" }, [
-      _c(
-        "a",
-        {
-          staticClass: "btn btn-danger btn-xs ladda-button",
-          attrs: { href: "#", "data-style": "zoom-in" }
-        },
-        [
-          _c("span", { staticClass: "ladda-label" }, [
-            _c("i", { staticClass: "fa fa-minus" })
-          ])
-        ]
-      )
+    return _c("span", { staticClass: "ladda-label" }, [
+      _c("i", { staticClass: "fa fa-minus" })
     ])
   }
 ]
