@@ -8,8 +8,8 @@ $factory->define(App\Models\Gimnasta::class, function (Faker $faker) {
         'apellidos' => $faker->lastName,
         'fecha_nacimiento' => $faker->dateTimeBetween($startDate = '-30 years', $endDate = '-4 years', $timezone = null),
         'gimnasio_id' => factory('App\Models\Gimnasio')->create()->id,
-        'nivel_id' => rand(1,10),
-        'rango_id' => rand(1,5),
+        'nivel_id' => App\Models\Nivel::all()->random()->id,
+        'rango_id' => App\Models\Rango::all()->random()->id,
         'competencia_general_id' => 1
     ];
 });
