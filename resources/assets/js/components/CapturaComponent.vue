@@ -12,17 +12,21 @@
                     </div>
                     <div class="col-xs-2">
                         <div class="box-header with-border">
-                        <a href="http://localhost:8000/admin/gimnasta/create" class="btn btn-success ladda-button" data-style="zoom-in"><span class="ladda-label"><i class="fa fa-plus"></i> Añadir Juez</span></a>
+                        <!-- Trigger de modal -->
+                        <button type="button" class="btn btn-primary ladda-button" data-toggle="modal" data-target="#agregar_juez">
+                            <span class="ladda-label"><i class="fa fa-plus"></i> Modificar/Añadir Jueces </span>
+                        </button>
+                        
                         <div id="datatable_button_stack" class="pull-right text-right"></div>
                         </div>
                     </div>
                     </div>
-                    <div class="row" v-for="juez in jueces">
+                    <div class="row" v-for="juez in jueces_activos">
                         <div class="col-xs-10">
                             <span> {{ juez.nombre }}</span>
                         </div>
                         <div class="col-xs-2">
-                            <a href="http://localhost:8000/admin/gimnasta/create" class="btn btn-danger btn-xs ladda-button" data-style="zoom-in"><span class="ladda-label"><i class="fa fa-minus"></i></span></a>
+                            <a href="#" class="btn btn-danger btn-xs ladda-button" data-style="zoom-in"><span class="ladda-label"><i class="fa fa-minus"></i></span></a>
                         </div>
                     </div>
                 </div>
@@ -63,7 +67,36 @@
                 </div>
             </div>
         </div>
-    </div>
+
+        <!-- Modal para agregar juez-->
+        <div class="modal fade" id="agregar_juez" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Modificar/Añadir Jueces</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row" v-for="juez in jueces_activos">
+                    <div class="col-xs-10">
+                        <span> {{ juez.nombre }}</span>
+                    </div>
+                    <div class="col-xs-2">
+                        <a href="#" class="btn btn-danger btn-xs ladda-button" data-style="zoom-in"><span class="ladda-label"><i class="fa fa-minus"></i></span></a>
+                    </div>
+                </div>
+                <hr>
+                <v-select v-model="juez_selected" :options="jueces" label="nombre">
+                </v-select>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-success" @click="choose_juez">Agregar Juez seleccionado</button>
+            </div>
+            </div>
+        </div>
+        </div>
+</div>
 </template>
 
 <script>
@@ -77,7 +110,8 @@
                 aparato_selected: null,
                 calificaciones: [],
                 jueces: [],
-                
+                jueces_activos: [],
+                juez_selected: null
             }
         },
         mounted() {
@@ -97,6 +131,12 @@
             console.log('Componenente de Captura listo.')
         },
         methods: {
+            choose_juez(){
+                console.log("New juez selected");
+                if(this.juez_selected != null){
+                    this.jueces_activos.push(this.juez_selected);
+                }
+            }
         },
         watch:{
             // Cada vez que se seleccione una nueva gimnasta se obtienen sus calificaciones
