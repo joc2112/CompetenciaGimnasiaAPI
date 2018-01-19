@@ -159,10 +159,24 @@
                 }
 
             },
+            notify(type, title, message){
+                new PNotify({
+                    title: title,
+                    text: message,
+                    type: type,
+                    animation: "fade",
+                    animate_speed: "normal",
+                    hide: true,
+                    delay: 3000
+                });
+            },
             capturarCalificaciones(){
                 // Hacer post a guardar nuevas calificaciones por cada juez activo
                 var gimnasta_id = this.gimnasta_selected.id;
+                let notify = this.notify;
+                var gimnasta_nombre = this.gimnasta_selected.nombre;
                 var disciplina_id = this.aparato_selected.id;
+                var wasError = false;
                 this.jueces_activos.forEach(function(juez){
                     var data = {
                         juez_id: juez.id,
@@ -172,9 +186,19 @@
                     }
                     console.log(data)
                     axios.post('/api/calificaciones',data)
-                    .then(response => console.log(response))
-                    .catch(error => console.log(error))
+                    .then(function(response){
+                        console.log(response);
+                        notify("success", "Exito", "Calificacion guardada para " + gimnasta_nombre);
+                    })
+                    .catch(function(error){
+                        console.log(error);
+                        notify("error", "Error!", "Ocurrio un error al intentar guardar las calificaciones. Consulte a su admin para mayor info.");
+                    })
                 });
+                // Por ultimo se resetea la gimnasta a ser calificada
+                this.gimnasta_selected = null;
+                
+
             }
             // hasGrade(juez){
             //     // Check if this juez is in any of the current calificaciones
