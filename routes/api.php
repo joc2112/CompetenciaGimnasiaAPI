@@ -148,7 +148,12 @@ Route::get('/calificaciones/{gimnasta}', function (App\Models\Gimnasta $gimnasta
 
 // Insertar una nueva calificacion de una gimnasta
 Route::post('/calificaciones', function (Request $request) {
-    $calificacion = App\Models\Calificacion::firstOrCreate($request->all());
+    // Checar duplicados de calificaciones
+    $calificacion = App\Models\Calificacion::where('juez_id',$request->juez_id)->where('gimnasta_id', $request->gimnasta_id)->where('disciplina_id',$request->disciplina_id)->get()->first();
+    // Si no existe, entonces crear una nueva
+    if($calificacion == null){
+        $calificacion = App\Models\Calificacion::firstOrCreate($request->all());
+    }
     return $calificacion;
 });
 

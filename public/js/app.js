@@ -43049,6 +43049,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -43104,7 +43116,40 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             if (index > -1) {
                 this.jueces_activos.splice(index, 1);
             }
+        },
+        capturarCalificaciones: function capturarCalificaciones() {
+            // Hacer post a guardar nuevas calificaciones por cada juez activo
+            var gimnasta_id = this.gimnasta_selected.id;
+            var disciplina_id = this.aparato_selected.id;
+            this.jueces_activos.forEach(function (juez) {
+                var data = {
+                    juez_id: juez.id,
+                    gimnasta_id: gimnasta_id,
+                    disciplina_id: disciplina_id,
+                    calificacion: juez.calificacion
+                };
+                console.log(data);
+                __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/api/calificaciones', data).then(function (response) {
+                    return console.log(response);
+                }).catch(function (error) {
+                    return console.log(error);
+                });
+            });
         }
+        // hasGrade(juez){
+        //     // Check if this juez is in any of the current calificaciones
+        //     console.log(this.calificaciones);
+        //     console.log(juez);
+        //     this.calificaciones.forEach(function(calificacion){
+        //         if(calificacion.juez_id == juez.id){
+        //             console.log("stuff");
+        //             juez.calificacion = calificacion;
+        //             return true;
+        //         }
+        //     });
+        //     return true;
+        // }
+
     },
     watch: {
         // Cada vez que se seleccione una nueva gimnasta se obtienen sus calificaciones
@@ -43112,13 +43157,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this2 = this;
 
             console.log("Cambioo de gimnasta");
+
             // Obtener y filtrar calificaciones solo del aparato seleccionado
-            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/api/calificaciones/' + this.gimnasta_selected.id).then(function (response) {
-                return _this2.calificaciones = response.data;
-            }).catch(function (error) {
-                return console.log(error);
-            });
-            // TODO FILTRAR POR APARATO SELECCIONADO
+            if (this.gimnasta_selected != null) {
+                __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/api/calificaciones/' + this.gimnasta_selected.id).then(function (response) {
+                    return _this2.calificaciones = response.data;
+                }).catch(function (error) {
+                    return console.log(error);
+                });
+
+                // Filtrar solo calificaciones del aparato seleccionado
+                if (this.aparato_selected != null) {
+                    this.calificaciones = this.calificaciones.filter(function (calificacion) {
+                        return calificacion.disciplina_id == _this2.aparato_selected.id;
+                    });
+                }
+            }
         }
     }
 
@@ -43146,11 +43200,7 @@ var render = function() {
               _vm._v(" "),
               _vm._l(_vm.jueces_activos, function(juez) {
                 return _c("div", { staticClass: "row" }, [
-                  _c("div", { staticClass: "col-xs-10" }, [
-                    _c("span", [_vm._v(" " + _vm._s(juez.nombre))])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-xs-2" }, [
+                  _c("div", { staticClass: "col-xs-12" }, [
                     _c(
                       "a",
                       {
@@ -43163,7 +43213,11 @@ var render = function() {
                         }
                       },
                       [_vm._m(1, true)]
-                    )
+                    ),
+                    _vm._v(" "),
+                    _c("span", { staticStyle: { "margin-left": "5px" } }, [
+                      _vm._v(" " + _vm._s(juez.nombre))
+                    ])
                   ])
                 ])
               })
@@ -43176,21 +43230,36 @@ var render = function() {
             _vm._v(" "),
             _c(
               "select",
-              { staticClass: "form-control" },
-              _vm._l(_vm.aparatos, function(aparato) {
-                return _c(
-                  "option",
+              {
+                directives: [
                   {
-                    model: {
-                      value: _vm.aparato_selected,
-                      callback: function($$v) {
-                        _vm.aparato_selected = $$v
-                      },
-                      expression: "aparato_selected"
-                    }
-                  },
-                  [_vm._v(_vm._s(aparato.nombre))]
-                )
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.aparato_selected,
+                    expression: "aparato_selected"
+                  }
+                ],
+                staticClass: "form-control",
+                on: {
+                  change: function($event) {
+                    var $$selectedVal = Array.prototype.filter
+                      .call($event.target.options, function(o) {
+                        return o.selected
+                      })
+                      .map(function(o) {
+                        var val = "_value" in o ? o._value : o.value
+                        return val
+                      })
+                    _vm.aparato_selected = $event.target.multiple
+                      ? $$selectedVal
+                      : $$selectedVal[0]
+                  }
+                }
+              },
+              _vm._l(_vm.aparatos, function(aparato) {
+                return _c("option", { domProps: { value: aparato } }, [
+                  _vm._v(_vm._s(aparato.nombre))
+                ])
               })
             )
           ])
@@ -43229,15 +43298,58 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "tbody",
-                _vm._l(_vm.calificaciones, function(calificacion) {
+                _vm._l(_vm.jueces_activos, function(juez) {
                   return _c("tr", [
-                    _c("td", [_vm._v(_vm._s(calificacion.juez.nombre))]),
+                    _c("td", [_vm._v(_vm._s(juez.nombre))]),
                     _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(calificacion.calificacion))])
+                    _c("td", [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: juez.calificacion,
+                            expression: "juez.calificacion"
+                          }
+                        ],
+                        attrs: {
+                          type: "number",
+                          name: "calificacion",
+                          min: "0",
+                          value: "20",
+                          step: "any"
+                        },
+                        domProps: { value: juez.calificacion },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(juez, "calificacion", $event.target.value)
+                          }
+                        }
+                      })
+                    ])
                   ])
                 })
               )
             ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("hr"),
+        _vm._v(" "),
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-xs-12" }, [
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-success btn-lg ladda-button",
+                attrs: { type: "button" },
+                on: { click: _vm.capturarCalificaciones }
+              },
+              [_vm._m(3)]
+            )
           ])
         ])
       ])
@@ -43260,7 +43372,7 @@ var render = function() {
           { staticClass: "modal-dialog", attrs: { role: "document" } },
           [
             _c("div", { staticClass: "modal-content" }, [
-              _vm._m(3),
+              _vm._m(4),
               _vm._v(" "),
               _c(
                 "div",
@@ -43284,7 +43396,7 @@ var render = function() {
                               }
                             }
                           },
-                          [_vm._m(4, true)]
+                          [_vm._m(5, true)]
                         )
                       ])
                     ])
@@ -43385,6 +43497,15 @@ var staticRenderFns = [
       _c("th", [_vm._v("Juez")]),
       _vm._v(" "),
       _c("th", [_vm._v("Calificacion")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "ladda-label" }, [
+      _c("i", { staticClass: "fa fa-check" }),
+      _vm._v(" Capturar Calificaciones ")
     ])
   },
   function() {
