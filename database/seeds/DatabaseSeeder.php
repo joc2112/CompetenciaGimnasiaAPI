@@ -102,12 +102,9 @@ class DatabaseSeeder extends Seeder
         //     });
         // });
 
-        // Crea 50 gimnastas de prueba
-        // al crear cada gimnasta, tambien se crea un nuevo gimnasio
-        factory(App\Models\Gimnasta::class, 50)->create();
 
-        // Crear calificaciones
-        factory(App\Models\Calificacion::class, 100)->create();
+
+
 
     }
 }
