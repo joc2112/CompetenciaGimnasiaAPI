@@ -18,9 +18,7 @@ class DatabaseSeeder extends Seeder
         //     $u->posts()->save(factory(App\Models\Post::class)->make());
         // });
 
-        // Crea 50 gimnastas de prueba
-        // al crear cada gimnasta, tambien se crea un nuevo gimnasio
-        factory(App\Models\Gimnasta::class, 50)->create();
+
         
         // Crear los Niveles y Rangos de edad
         for($i = 1; $i <= 10; $i++){
@@ -98,11 +96,16 @@ class DatabaseSeeder extends Seeder
         ]);
 
         // Crear mesas de juicio
-        factory(App\Models\MesaDeJuicio::class, 20)->create()->each(function($mesa) {
-            factory(App\Models\Juez::class, 4)->make()->each(function($juez) use ($mesa) {
-                 $mesa->jueces()->save($juez);
-            });
-        });
+        // factory(App\Models\MesaDeJuicio::class, 20)->create()->each(function($mesa) {
+        //     factory(App\Models\Juez::class, 4)->make()->each(function($juez) use ($mesa) {
+        //          $mesa->jueces()->save($juez);
+        //     });
+        // });
+
+        // Crea 50 gimnastas de prueba
+        // al crear cada gimnasta, tambien se crea un nuevo gimnasio
+        factory(App\Models\Gimnasta::class, 50)->create();
+
         // Crear calificaciones
         factory(App\Models\Calificacion::class, 100)->create();
 
