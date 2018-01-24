@@ -4,6 +4,10 @@
  * Production Database Vars
  */
 $url = parse_url(env("DATABASE_URL"));
+$host = null;
+$username = null;
+$password = null;
+$database = null;
 if($url && isset($url["host"])){
     $host = $url["host"];
     $username = $url["user"];

@@ -192,7 +192,7 @@
                     })
                     .catch(function(error){
                         console.log(error);
-                        notify("error", "Error!", "Ocurrio un error al intentar guardar las calificaciones. Consulte a su admin para mayor info.");
+                        notify("error", "Error!", "Ocurrio un error al intentar guardar la calificacion. Consulte a su admin para mayor info.");
                     })
                 });
                 // Por ultimo se resetea la gimnasta a ser calificada
