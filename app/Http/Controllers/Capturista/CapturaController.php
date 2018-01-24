@@ -25,4 +25,14 @@ class CapturaController extends Controller
     {
         return view('capturista.captura');
     }
+
+    /**
+     * Mostrar los standings en tiempo real
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function standings()
+    {
+        return view('standings.realtime');
+    }
 }

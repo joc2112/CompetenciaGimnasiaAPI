@@ -18,6 +18,10 @@ window.Vue = require('vue');
 import CapturaComponent from './components/CapturaComponent.vue';
 Vue.component('captura-component', CapturaComponent);
 
+// Componente de los standings
+import StandingsComponent from './components/StandingsComponent.vue';
+Vue.component('standings-component', StandingsComponent);
+
 // Componente del vue select
 import vSelect from 'vue-select'
 Vue.component('v-select', vSelect)
