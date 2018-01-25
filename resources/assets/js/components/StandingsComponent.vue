@@ -54,7 +54,11 @@
             }
         },
         mounted() {
-            console.log('Standings funcionando')
+            console.log('Standings funcionando');
+            // Listar los ultimos standings
+            axios.get('/api/standings')
+                .then(response => this.standings = response.data)
+                .catch(error => console.log(error))
         }
 
     }
