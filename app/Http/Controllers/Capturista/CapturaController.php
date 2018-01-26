@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Capturista;
 
 use Illuminate\Http\Request;
-
+use App\Models\Gimnasta;
 class CapturaController extends Controller
 {
     /**
@@ -34,5 +34,15 @@ class CapturaController extends Controller
     public function standings()
     {
         return view('standings.realtime');
+    }
+
+    /**
+     * Mostrar las calificaciones promedio de la gimnasta provided
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function resultados(Gimnasta $gimnasta)
+    {
+        return view('standings.resultados',["gimnasta" => $gimnasta]);
     }
 }

@@ -22,6 +22,10 @@ Vue.component('captura-component', CapturaComponent);
 import StandingsComponent from './components/StandingsComponent.vue';
 Vue.component('standings-component', StandingsComponent);
 
+// Componente de los resultados
+import ResultadosComponent from './components/ResultadosComponent.vue';
+Vue.component('resultados-component', ResultadosComponent);
+
 // Componente del vue select
 import vSelect from 'vue-select'
 Vue.component('v-select', vSelect)

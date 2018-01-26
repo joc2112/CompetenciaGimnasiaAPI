@@ -163,11 +163,15 @@ Route::get('/calificaciones/{gimnasta}/promedio', function (App\Models\Gimnasta 
     $calificaciones_disciplina = $gimnasta->calificaciones->groupBy('disciplina_id');
 
     // Resultados de cada disciplina
-    $resultados = ["1" => null, "2" => null, "3" => null, "4" => null]; 
+    $resultados = ["viga" => null, "piso" => null, "salto" => null, "barras" => null, "AA" => 0];
+    $total = 0;
     foreach($calificaciones_disciplina as $disciplina_id => $calificaciones){
-        $resultados[$disciplina_id] = App\Models\Calificacion::promedio($calificaciones);
+        $promedio = App\Models\Calificacion::promedio($calificaciones);
+        $disciplina_nombre = App\Models\Disciplina::find($disciplina_id)->nombre;
+        $resultados[$disciplina_nombre] = $promedio;
+        $resultados["AA"] += $promedio;
     }
     // Regresar los datos de la gimnasta junto con las calificaciones
-    return ["gimnasta" => $gimnasta, "promedios" => $resultados];
+    return ["gimnasta" => $gimnasta, "gimnasio" => $gimnasta->gimnasio, "promedios" => $resultados];
 });
 
