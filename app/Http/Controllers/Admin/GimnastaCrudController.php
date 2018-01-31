@@ -127,10 +127,14 @@ class GimnastaCrudController extends CrudController
         $this->crud->addColumn([
             // run a function on the CRUD model and show its return value
             'name' => "resultados",
-            'label' => "Rcesultados", // Table column heading
+            'label' => "Resultados", // Table column heading
             'type' => "model_function",
             'function_name' => 'getResultadosLink', // the method in your Model
          ]);
+
+        // Remover la columna del id de la competencia -- Temporalmente
+        // TODO: Conectar el id con el year de la competencia
+        $this->crud->removeColumn('competencia_general_id');
         
         // Relacionar la fecha de la competencia
         // $this->crud->setColumnDetails('competencia_general_id',[
