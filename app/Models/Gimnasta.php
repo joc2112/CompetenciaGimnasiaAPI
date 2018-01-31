@@ -46,4 +46,11 @@ class Gimnasta extends Model
     public function competencia(){
         return $this->belongsTo('App\Models\CompetenciaGeneral');
     }
+
+    /**
+     * Obtiene el link en html de las calificaciones
+     */
+    public function getResultadosLink() {
+        return '<a href="'.url('resultados/'.$this->id).'" target="_blank">Resultados</a>';
+    }
 }

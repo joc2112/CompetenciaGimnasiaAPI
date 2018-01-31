@@ -122,6 +122,15 @@ class GimnastaCrudController extends CrudController
             'attribute' => 'nivel', // foreign key attribute that is shown to user
             'model' => "App\Models\Nivel" // foreign key model
         ]);
+
+        // Columna para accesar los resultados de la gimnasta
+        $this->crud->addColumn([
+            // run a function on the CRUD model and show its return value
+            'name' => "resultados",
+            'label' => "Rcesultados", // Table column heading
+            'type' => "model_function",
+            'function_name' => 'getResultadosLink', // the method in your Model
+         ]);
         
         // Relacionar la fecha de la competencia
         // $this->crud->setColumnDetails('competencia_general_id',[
