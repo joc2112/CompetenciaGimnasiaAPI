@@ -159,19 +159,20 @@ Route::post('/calificaciones', function (Request $request) {
 
 // Obtener todas las calificaciones promedio de una gimnasta
 Route::get('/calificaciones/{gimnasta}/promedio', function (App\Models\Gimnasta $gimnasta) {
-    // Primero se obtienen todas las calificaciones agrupadas por disciplinas
-    $calificaciones_disciplina = $gimnasta->calificaciones->groupBy('disciplina_id');
-
-    // Resultados de cada disciplina
-    $resultados = ["viga" => null, "piso" => null, "salto" => null, "barras" => null, "AA" => 0];
-    $total = 0;
-    foreach($calificaciones_disciplina as $disciplina_id => $calificaciones){
-        $promedio = App\Models\Calificacion::promedio($calificaciones);
-        $disciplina_nombre = App\Models\Disciplina::find($disciplina_id)->nombre;
-        $resultados[$disciplina_nombre] = $promedio;
-        $resultados["AA"] += $promedio;
-    }
-    // Regresar los datos de la gimnasta junto con las calificaciones
-    return ["gimnasta" => $gimnasta, "gimnasio" => $gimnasta->gimnasio, "promedios" => $resultados];
+    return $gimnasta->promedios();
 });
+
+// Obtener todas las calificaciones promedio de todas las gimnastas
+// del mismo nivel y rango
+Route::get('/calificaciones/{nivel}/{rango}/', function (App\Models\Nivel $nivel, App\Models\Rango $rango) {
+    // Obtener todas las gimnastas del mismo rango y nivel
+    $gimnastas = App\Models\Gimnasta::where('nivel_id',$nivel->id)->where('rango_id', $rango->id)->get();
+    // Por cada una, calcular sus promedios de sus calificaciones
+    $calificaciones = array();
+    foreach($gimnastas as $gimnasta){
+        array_push($calificaciones, $gimnasta->promedios());
+    }
+    return $calificaciones;
+});
+
 

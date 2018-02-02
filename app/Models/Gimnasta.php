@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Backpack\CRUD\CrudTrait;
+use App\Models;
 
 class Gimnasta extends Model
 {
@@ -52,5 +53,25 @@ class Gimnasta extends Model
      */
     public function getResultadosLink() {
         return '<a href="'.url('resultados/'.$this->id).'" target="_blank">Resultados</a>';
+    }
+
+    /**
+     * Obtiene las calificaciones promedio
+     */
+    public function promedios(){
+        // Primero se obtienen todas las calificaciones agrupadas por disciplinas
+        $calificaciones_disciplina = $this->calificaciones->groupBy('disciplina_id');
+
+        // Resultados de cada disciplina
+        $resultados = ["viga" => null, "piso" => null, "salto" => null, "barras" => null, "AA" => 0];
+        $total = 0;
+        foreach($calificaciones_disciplina as $disciplina_id => $calificaciones){
+            $promedio = Models\Calificacion::promedio($calificaciones);
+            $disciplina_nombre = Models\Disciplina::find($disciplina_id)->nombre;
+            $resultados[$disciplina_nombre] = $promedio;
+            $resultados["AA"] += $promedio;
+        }
+        // Regresar los datos de la gimnasta junto con las calificaciones
+        return ["gimnasta" => $this, "gimnasio" => $this->gimnasio, "promedios" => $resultados];
     }
 }
