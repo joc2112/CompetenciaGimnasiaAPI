@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Capturista;
 
 use Illuminate\Http\Request;
-use App\Models\Gimnasta;
+use App\Models;
 class CapturaController extends Controller
 {
     /**
@@ -41,8 +41,20 @@ class CapturaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function resultados(Gimnasta $gimnasta)
+    public function resultados(Models\Gimnasta $gimnasta)
     {
         return view('standings.resultados',["gimnasta" => $gimnasta]);
     }
+
+    /**
+     * Mostrar las calificaciones promedio de las gimnastas del nivel y rango dado
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function resultados_nivel_rango(Models\Nivel $nivel, Models\Rango $rango) {
+        // Obtener todas las gimnastas del mismo rango y nivel
+        $gimnastas = Models\Gimnasta::where('nivel_id',$nivel->id)->where('rango_id', $rango->id)->get();
+        return view('standings.resultados_nivel_rango',["gimnastas" => $gimnastas, "nivel" => $nivel, "rango" => $rango]);;
+    }
+    
 }

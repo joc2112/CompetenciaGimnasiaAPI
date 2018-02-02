@@ -37,5 +37,6 @@ Route::group(['middleware' => ['auth'], 'namespace' => 'Capturista'], function()
     Route::get('/capturar', 'CapturaController@index')->name('home');
     Route::get('/standings', 'CapturaController@standings')->name('standings');
     Route::get('/resultados/{gimnasta}', 'CapturaController@resultados')->name('resultados');
+    Route::get('/resultados/{nivel}/{rango}', 'CapturaController@resultados_nivel_rango')->name('resultados_nivel_rango');
 });
 

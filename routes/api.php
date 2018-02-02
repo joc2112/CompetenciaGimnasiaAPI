@@ -172,7 +172,7 @@ Route::get('/calificaciones/{nivel}/{rango}/', function (App\Models\Nivel $nivel
     foreach($gimnastas as $gimnasta){
         array_push($calificaciones, $gimnasta->promedios());
     }
-    return $calificaciones;
+    return $gimnastas;
 });
 
 
