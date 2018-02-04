@@ -8419,3 +8419,9 @@ h1 {
   padding-bottom: 1.5rem;
 }
 
+@media print {
+  a[href]:after {
+    content: none !important;
+  }
+}
+

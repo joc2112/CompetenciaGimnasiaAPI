@@ -1,6 +1,6 @@
 <template>
         <tr v-if="resultados"> <!-- Avoid console errors by waiting until the object has loaded -->
-            <td>{{resultados.gimnasta.nombre}}</td>
+            <td><a :id="resultados.gimnasta.id" :href="link">{{resultados.gimnasta.nombre}}</a></td>
             <td>{{resultados.gimnasta.id}}</td>
             <td>{{resultados.gimnasio.nombre}}</td>
             <td>{{resultados.promedios.viga}}</td>
@@ -17,15 +17,21 @@
         props: ['gimnasta'],
         data(){
             return {
-                resultados: null
+                resultados: null,
+                link: ""
             }
         },
+        getLink(){
+            return "<img>";
+        },
         mounted() {
-            console.log('Standings funcionando');
             console.log(this.gimnasta);
             // Listar las calificaciones
             axios.get('/api/calificaciones/' + this.gimnasta.id + '/promedio')
-                .then(response => this.resultados = response.data)
+                .then(response => {
+                    this.resultados = response.data;
+                    this.link = "../" + this.gimnasta.id;
+                })
                 .catch(error => console.log(error))
         }
 

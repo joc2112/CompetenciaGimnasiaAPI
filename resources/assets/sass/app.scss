@@ -73,3 +73,9 @@
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
   }
+
+  @media print {
+    a[href]:after {
+      content: none !important;
+    }
+  }

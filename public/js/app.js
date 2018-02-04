@@ -48812,17 +48812,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     props: ['gimnasta'],
     data: function data() {
         return {
-            resultados: null
+            resultados: null,
+            link: ""
         };
+    },
+    getLink: function getLink() {
+        return "<img>";
     },
     mounted: function mounted() {
         var _this = this;
 
-        console.log('Standings funcionando');
         console.log(this.gimnasta);
         // Listar las calificaciones
         axios.get('/api/calificaciones/' + this.gimnasta.id + '/promedio').then(function (response) {
-            return _this.resultados = response.data;
+            _this.resultados = response.data;
+            _this.link = "../" + _this.gimnasta.id;
         }).catch(function (error) {
             return console.log(error);
         });
@@ -48839,7 +48843,13 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _vm.resultados
     ? _c("tr", [
-        _c("td", [_vm._v(_vm._s(_vm.resultados.gimnasta.nombre))]),
+        _c("td", [
+          _c(
+            "a",
+            { attrs: { id: _vm.resultados.gimnasta.id, href: _vm.link } },
+            [_vm._v(_vm._s(_vm.resultados.gimnasta.nombre))]
+          )
+        ]),
         _vm._v(" "),
         _c("td", [_vm._v(_vm._s(_vm.resultados.gimnasta.id))]),
         _vm._v(" "),
