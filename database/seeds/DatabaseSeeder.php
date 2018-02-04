@@ -81,21 +81,25 @@ class DatabaseSeeder extends Seeder
 
         // Disciplinas (viga, piso, salto, barras)
         DB::table('disciplinas')->insert([
+            'id' => "1",
             'nombre' => "viga",
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]); 
         DB::table('disciplinas')->insert([
+            'id' => "2",
             'nombre' => "piso",
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
         DB::table('disciplinas')->insert([
+            'id' => "3",
             'nombre' => "salto",
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
         DB::table('disciplinas')->insert([
+            'id' => "4",
             'nombre' => "barras",
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
