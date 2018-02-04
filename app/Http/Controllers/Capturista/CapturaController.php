@@ -43,7 +43,9 @@ class CapturaController extends Controller
      */
     public function resultados(Models\Gimnasta $gimnasta)
     {
-        return view('standings.resultados',["gimnasta" => $gimnasta]);
+        // Obtener datos de la competencia
+        $competencia = Models\CompetenciaGeneral::find(env("COMPETENCIA_ID", 1));
+        return view('standings.resultados',["gimnasta" => $gimnasta, "competencia" => $competencia]);
     }
 
     /**

@@ -1,14 +1,14 @@
 <template>
-    <tr v-if="resultados"> <!-- Avoid console errors by waiting until the object has loaded -->
-        <td>{{resultados.gimnasta.nombre}}</td>
-        <td>{{resultados.gimnasta.id}}</td>
-        <td>{{resultados.gimnasio.nombre}}</td>
-        <td>{{resultados.promedios.viga}}</td>
-        <td>{{resultados.promedios.piso}}</td>
-        <td>{{resultados.promedios.salto}}</td>
-        <td>{{resultados.promedios.barras}}</td>
-        <td>{{resultados.promedios.AA}}</td>
-    </tr>
+        <tr v-if="resultados"> <!-- Avoid console errors by waiting until the object has loaded -->
+            <td>{{resultados.gimnasta.nombre}}</td>
+            <td>{{resultados.gimnasta.id}}</td>
+            <td>{{resultados.gimnasio.nombre}}</td>
+            <td>{{resultados.promedios.viga}}</td>
+            <td>{{resultados.promedios.piso}}</td>
+            <td>{{resultados.promedios.salto}}</td>
+            <td>{{resultados.promedios.barras}}</td>
+            <td>{{resultados.promedios.AA}}</td>
+        </tr>
 </template>
 
 <script>
