@@ -4,10 +4,8 @@
 <div id="app">
     <div class="container-fluid">
         <div class="row">
-            <h2>Buscar resultados de la competencia</h2>
-        </div>
-        <div class="row">
-            <div class="col-xs-6 col-md-4">
+            <div class="col-xs-4 col-md-offset-4">
+                <h1>Buscar resultados</h1>
                 <h3>Nivel</h3>
                 <select class="form-control" name="nivel" id="nivel">
                     @foreach ($niveles as $nivel)
@@ -21,19 +19,21 @@
                         <option value="{{$rango->id}}">{{$rango->rango}}</option>
                     @endforeach
                 </select>
+                <hr>
+                <!-- Submit button -->
+                <div class="row">
+                    <div class="col-xs-12">
+                        <a href="#">
+                            <button type="button" onclick="goToLink()" class="btn btn-success btn-lg ladda-button">
+                                <span class="ladda-label"><i class="fa fa-check"></i> Mostrar </span>
+                            </button>
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
         <hr>
-        <!-- Submit button -->
-        <div class="row">
-            <div class="col-xs-12">
-                <a href="#">
-                    <button type="button" onclick="goToLink()" class="btn btn-success btn-lg ladda-button">
-                        <span class="ladda-label"><i class="fa fa-check"></i> Mostrar </span>
-                    </button>
-                </a>
-            </div>
-        </div>
+
     </div>
 </div>
 

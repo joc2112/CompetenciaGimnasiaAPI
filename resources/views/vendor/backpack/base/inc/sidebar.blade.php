@@ -22,7 +22,8 @@
           <!-- ================================================ -->
           <li><a href="{{ backpack_url('dashboard') }}"><i class="fa fa-dashboard"></i> <span>{{ trans('backpack::base.dashboard') }}</span></a></li>
           <li><a href="{{ backpack_url('gimnasta') }}"><i class="fa fa-female"></i> <span>Gimnastas</span></a></li>
-          <li><a href="{{ backpack_url('calificacion') }}"><i class="fa fa-check"></i> <span>Calificaciones</span></a></li>
+          <li><a href="{{ route('resultados_form') }}"><i class="fa fa-trophy"></i> <span>Resultados</span></a></li>
+          <li><a href="{{ backpack_url('calificacion') }}"><i class="fa fa-check"></i> <span>Calificaciones capturadas</span></a></li>
           <li><a href="{{ backpack_url('gimnasio') }}"><i class="fa fa-home"></i> <span>Gimnacios</span></a></li>
           <li><a href="{{ backpack_url('ciudad') }}"><i class="fa fa-globe"></i> <span>Ciudades</span></a></li>
           <li><a href="{{ backpack_url('juez') }}"><i class="fa fa-pencil-square-o"></i> <span>Jueces</span></a></li>
