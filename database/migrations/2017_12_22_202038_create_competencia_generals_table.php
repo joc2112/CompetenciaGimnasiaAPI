@@ -15,6 +15,7 @@ class CreateCompetenciaGeneralsTable extends Migration
     {
         Schema::create('competencia_generals', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('nombre');
             $table->date('fecha');
             $table->string('lugar');
             $table->timestamps();

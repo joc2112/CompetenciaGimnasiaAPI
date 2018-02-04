@@ -34,9 +34,15 @@ Route::get('/' , ['middleware' => 'auth', function () {
 }]);
 
 Route::group(['middleware' => ['auth'], 'namespace' => 'Capturista'], function(){
+    // Ruta principal de captura de calificaciones
     Route::get('/capturar', 'CapturaController@index')->name('home');
+    // Real time standings
     Route::get('/standings', 'CapturaController@standings')->name('standings');
+    // Ruta para los resultados de una gimnasta en especifico
     Route::get('/resultados/{gimnasta}', 'CapturaController@resultados')->name('resultados');
+    // Ruta para resultados grupales
     Route::get('/resultados/{nivel}/{rango}', 'CapturaController@resultados_nivel_rango')->name('resultados_nivel_rango');
+    // Ruta paa seleccionar el nivel y rango de edad de los resultados
+    Route::get('/resultados', 'CapturaController@resultados_form')->name('resultados_form');
 });
 
