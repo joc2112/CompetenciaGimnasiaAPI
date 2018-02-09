@@ -8,6 +8,17 @@
                 <div class="panel-heading">Acceso a capturistas</div>
 
                 <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <b>Admin</b> user: admin@admin.com pass: admin<br>
+                            <b>Capturist</b>: user: cap@cap.com pass: cap <br>
+                            <br> 
+                            <small> <b> Disclaimer:</b> Only for testing purposes. All data used in the system
+                                    is fake
+                            </small>
+                        </div>
+                    </div>
+                    <hr>
                     <form class="form-horizontal" method="POST" action="{{ route('login') }}">
                         {{ csrf_field() }}
 
