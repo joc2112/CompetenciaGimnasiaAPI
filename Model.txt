@@ -89,6 +89,61 @@ Lugares 9 al n, para entrega de medalla de participación.
 Primeros 8 lugares all around (suma de las calificaciones de los 4 aparatos)
 
 
+Cambios nuevos:
+
+- Agrupar los items del sidebar
+
+- Poder crear un torneo y seleccionar un torneo.
+
+- Mantener un torneo seleccionado.
+
+Del documento: 
+
+=====
+Gimnasia
+
+
+// Administrador
+
+- Control de Usuarios
+	
+		- Usuarios -> (Quienes podran ingresar al sistema) [CRUD]
+		- Roles -> (Actualmente solo Admin y Capturista) [CRUD]
+		- Permisos
+
+- Torneos -> (Al crear un torneo se solicita, nombre, logo, cede, etc...) [CRUD]
+
+		- Ciudades [CRUD]
+		- Gimnasios [CRUD]
+		- Niveles -> (Crear y definir rangos de edades para asignar a las gimnastas) [CRUD]
+		- Gimnastas [CRUD]
+		- Jueces [CRUD]
+		- Mesas de Juicio [CRUD]
+
+		* Reportes
+
+				- Calificaciones (x gimnasio, x gimnasta, x aparato, x juez, tec...) [Lista]
+				- Monitor All-Around (mostrar todas las gimnastas del nivel en curso y mostrar sus calificaciones por aparato y el promedio total) [Lista]
+
+
+
+// Capturista
+
+- Capturar
+		
+		- Seleccionar aparato (iconos grandes).
+		- Seleccionar Gimnasta (Ordenar alfabeticamente).
+		- Automaticamente deben aparecer los jueces asignados a ese aparato y sus inputs para asignar las calificaciones.
+		- Guardar calificaciones y limpiar los campos.
+
+
+====
+
+
+
+
+
+
 
 NOTAS:
 Usar Passport de Laravel para seguirdad

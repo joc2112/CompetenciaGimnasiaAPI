@@ -15,7 +15,7 @@ return [
     'project_name' => 'Competencia Gimnasia 2018',
 
     // Menu logos
-    'logo_lg'   => '<b>Gimnasia</b>2018',
+    'logo_lg'   => '<i>Gimnasia</i>',
     'logo_mini' => '<b>G</b>',
 
     // Developer or company name. Shown in footer.
@@ -28,7 +28,7 @@ return [
     'show_powered_by' => true,
 
     // The AdminLTE skin. Affects menu color and primary/secondary colors used throughout the application.
-    'skin' => 'skin-purple',
+    'skin' => 'skin-blue-light',
     // Options: skin-black, skin-blue, skin-purple, skin-red, skin-yellow, skin-green, skin-blue-light, skin-black-light, skin-purple-light, skin-green-light, skin-red-light, skin-yellow-light
 
     // Date & Datetime Format Syntax: https://github.com/jenssegers/date#usage

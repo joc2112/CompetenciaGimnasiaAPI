@@ -20,21 +20,56 @@
           <!-- ================================================ -->
           <!-- ==== Recommended place for admin menu items ==== -->
           <!-- ================================================ -->
-          <li><a href="{{ backpack_url('dashboard') }}"><i class="fa fa-dashboard"></i> <span>{{ trans('backpack::base.dashboard') }}</span></a></li>
-          <li><a href="{{ backpack_url('gimnasta') }}"><i class="fa fa-female"></i> <span>Gimnastas</span></a></li>
-          <li><a href="{{ route('resultados_form') }}"><i class="fa fa-trophy"></i> <span>Resultados</span></a></li>
-          <li><a href="{{ backpack_url('calificacion') }}"><i class="fa fa-check"></i> <span>Calificaciones capturadas</span></a></li>
-          <li><a href="{{ backpack_url('gimnasio') }}"><i class="fa fa-home"></i> <span>Gimnacios</span></a></li>
-          <li><a href="{{ backpack_url('ciudad') }}"><i class="fa fa-globe"></i> <span>Ciudades</span></a></li>
-          <li><a href="{{ backpack_url('juez') }}"><i class="fa fa-pencil-square-o"></i> <span>Jueces</span></a></li>
-          <li><a href="{{ backpack_url('mesa') }}"><i class="fa fa-table"></i> <span>Mesas de Juicio</span></a></li>
-          <li><a href="{{ backpack_url('capturista') }}"><i class="fa fa-laptop"></i> <span>Capturistas</span></a></li>
-          <li><a href="{{ backpack_url('user') }}"><i class="fa fa-user"></i> <span>Usuarios</span></a></li>
-          <li><a href="{{ backpack_url('role') }}"><i class="fa fa-group"></i> <span>Roles</span></a></li>
-          <li><a href="{{ backpack_url('permission') }}"><i class="fa fa-key"></i> <span>Permisos</span></a></li>
-
-
-
+          <!-- <li><a href="{{ backpack_url('dashboard') }}"><i class="fa fa-dashboard"></i> <span>{{ trans('backpack::base.dashboard') }}</span></a></li> -->
+          <li class="treeview">
+            <a href="#">
+              <i class="fa fa-trophy"></i>
+              <span>Torneos</span>
+              <span class="pull-right-container">
+                <small class="label pull-right bg-green">Nuevo!</small>
+              </span>
+            </a>
+            <ul class="treeview-menu">
+              <li><a href="{{ backpack_url('gimnasta') }}"><i class="fa fa-female"></i> <span>Gimnastas</span></a></li>
+              <li><a href="{{ backpack_url('calificacion') }}"><i class="fa fa-check"></i> <span>Calificaciones capturadas</span></a></li>
+              <li><a href="{{ backpack_url('gimnasio') }}"><i class="fa fa-home"></i> <span>Gimnacios</span></a></li>
+              <li><a href="{{ backpack_url('ciudad') }}"><i class="fa fa-globe"></i> <span>Ciudades</span></a></li>
+              <li><a href="{{ backpack_url('juez') }}"><i class="fa fa-pencil-square-o"></i> <span>Jueces</span></a></li>
+              <li><a href="{{ backpack_url('mesa') }}"><i class="fa fa-table"></i> <span>Mesas de Juicio</span></a></li>
+              <li class="treeview">
+                <a href="#">
+                  <i class="fa fa-pie-chart"></i>
+                  <span>Reportes</span>
+                  <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                  </span>
+                </a>
+                <ul class="treeview-menu">
+                  <li><a href="{{ route('resultados_form') }}"><i class="fa fa-trophy"></i> <span>Resultados</span></a></li>
+                  <li><a href="/monitor"><i class="fa fa-desktop"></i> <span>Monitor All Around</span></a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          
+          <!-- Control de Usuarios -->          
+          <li class="treeview">
+            <a href="#">
+              <i class="fa fa-user"></i>
+              <span>Control de Usuarios</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu">
+              <li><a href="{{ backpack_url('capturista') }}"><i class="fa fa-laptop"></i> <span>Capturistas</span></a></li>
+              <li><a href="{{ backpack_url('user') }}"><i class="fa fa-user"></i> <span>Usuarios</span></a></li>
+              <li><a href="{{ backpack_url('role') }}"><i class="fa fa-group"></i> <span>Roles</span></a></li>
+              <li><a href="{{ backpack_url('permission') }}"><i class="fa fa-key"></i> <span>Permisos</span></a></li>
+            </ul>
+          </li>
+          <!--/ Fin de control de usuarios -->
+          
           <!-- ======================================= -->
           {{-- <li class="header">Other menus</li> --}}
         </ul>
