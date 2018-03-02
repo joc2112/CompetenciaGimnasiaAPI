@@ -10,6 +10,5 @@ $factory->define(App\Models\Gimnasta::class, function (Faker $faker) {
         'gimnasio_id' => factory('App\Models\Gimnasio')->create()->id,
         'nivel_id' => App\Models\Nivel::all()->random()->id,
         'rango_id' => App\Models\Rango::all()->random()->id,
-        'torneo_id' => 1
     ];
 });

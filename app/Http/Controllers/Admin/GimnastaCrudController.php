@@ -32,16 +32,6 @@ class GimnastaCrudController extends CrudController
 
         // ------ CRUD FIELDS
 
-        // Year del torneo
-        $this->crud->addField([  // Select
-            'label' => "Torneo",
-            'type' => 'select',
-            'name' => 'torneo_id', // the db column for the foreign key
-            'entity' => 'torneo', // the method that defines the relationship in your Model
-            'attribute' => 'fecha', // foreign key attribute that is shown to user
-            'model' => "App\Models\Torneo" // foreign key model
-        ], 'update/create/both');
-
         // Campos automaticos, se generan automaticamente dependiendo de como este la table de bd
         $this->crud->setFromDb();
 
@@ -88,6 +78,17 @@ class GimnastaCrudController extends CrudController
             'model' => "App\Models\Rango" // foreign key model
         ], 'update/create/both');
 
+        // Los torneos
+        $this->crud->addField([
+            // n-n relationship (with pivot table)
+            'label' => "Torneos", // Table column heading
+            'type' => "select2_multiple",
+            'name' => 'torneos', // the method that defines the relationship in your Model
+            'entity' => 'torneos', // the method that defines the relationship in your Model
+            'attribute' => "nombre", // foreign key attribute that is shown to user
+            'model' => "App\Models\Torneo", // foreign key model
+        ]);
+
         // $this->crud->addFields($array_of_arrays, 'update/create/both');
         // $this->crud->removeFields($array_of_names, 'update/create/both');
 
@@ -131,7 +132,19 @@ class GimnastaCrudController extends CrudController
             'type' => "model_function",
             'function_name' => 'getResultadosLink', // the method in your Model
          ]);
+        // Remover el id del torneo, porque no es necesario
+        $this->crud->removeColumn('torneo_id'); 
 
+        // Columna para mostrar los torneos
+        $this->crud->addColumn([
+            // n-n relationship (with pivot table)
+            'label' => "Torneos", // Table column heading
+            'type' => "select_multiple",
+            'name' => 'torneos', // the method that defines the relationship in your Model
+            'entity' => 'torneos', // the method that defines the relationship in your Model
+            'attribute' => "nombre", // foreign key attribute that is shown to user
+            'model' => "App\Models\Torneo", // foreign key model
+        ]);
 
         $this->crud->enableExportButtons();
         // $this->crud->addField([  // Select
