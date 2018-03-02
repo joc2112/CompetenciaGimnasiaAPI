@@ -18,8 +18,8 @@ class GimnastaSeeder extends Seeder
             // TODO: eliminar suceptible a repeticion
             $max_torneos = App\Models\Torneo::count();
             $rand_count = rand(1,$max_torneos);
-            for($i = 1; $i <= $rand_count; $i++){
-                $torneo = App\Models\Torneo::find($i);
+            for($i = 0; $i < $rand_count; $i++){
+                $torneo = App\Models\Torneo::all()->random();
                 $gimnasta->torneos()->save($torneo);
             }
             
