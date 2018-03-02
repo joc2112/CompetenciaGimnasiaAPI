@@ -39,14 +39,14 @@ class UserRolesSeeder extends Seeder
         ]);
         // Asignar roles a los usuarios
         // Admin
-        DB::table($config['user_has_roles'])->insert([
-            'role_id' => 1, // Admin role es 1
-            'user_id' => 1 // Admin user es 1
-        ]);
-        // Capturista
-        DB::table($config['user_has_roles'])->insert([
-            'role_id' => 2, // Capturista role es 2
-            'user_id' => 2 // Capturista user es 2
-        ]);
+        // DB::table($config['user_has_roles'])->insert([
+        //     'role_id' => 1, // Admin role es 1
+        //     'user_id' => 1 // Admin user es 1
+        // ]);
+        // // Capturista
+        // DB::table($config['user_has_roles'])->insert([
+        //     'role_id' => 2, // Capturista role es 2
+        //     'user_id' => 2 // Capturista user es 2
+        // ]);
     }
 }
