@@ -32,12 +32,12 @@ class GimnastaCrudController extends CrudController
 
         // ------ CRUD FIELDS
 
-        // Year de la competencia
+        // Year del torneo
         $this->crud->addField([  // Select
-            'label' => "Competencia",
+            'label' => "Torneo",
             'type' => 'select',
             'name' => 'torneo_id', // the db column for the foreign key
-            'entity' => 'competencia', // the method that defines the relationship in your Model
+            'entity' => 'torneo', // the method that defines the relationship in your Model
             'attribute' => 'fecha', // foreign key attribute that is shown to user
             'model' => "App\Models\Torneo" // foreign key model
         ], 'update/create/both');
@@ -132,25 +132,13 @@ class GimnastaCrudController extends CrudController
             'function_name' => 'getResultadosLink', // the method in your Model
          ]);
 
-        // Remover la columna del id de la competencia -- Temporalmente
-        // TODO: Conectar el id con el year de la competencia
-        // $this->crud->removeColumn('torneo_id');
-        
-        // Relacionar la fecha de la competencia
-        // $this->crud->setColumnDetails('torneo_id',[
-        //     'label' => "Competencia", // Table column heading
-        //     'type' => 'select',
-        //     'name' => 'torneo_id', // the db column for the foreign key
-        //     'entity' => 'competencia', // the method that defines the relationship in your Model
-        //     'attribute' => 'id', // foreign key attribute that is shown to user
-        //     'model' => "App\Models\Torneo" // foreign key model
-        // ]);
+
         $this->crud->enableExportButtons();
         // $this->crud->addField([  // Select
-        //     'label' => "Competencia",
+        //     'label' => "Torneo",
         //     'type' => 'select',
         //     'name' => 'torneo_id', // the db column for the foreign key
-        //     'entity' => 'competencia', // the method that defines the relationship in your Model
+        //     'entity' => 'torneo', // the method that defines the relationship in your Model
         //     'attribute' => 'fecha', // foreign key attribute that is shown to user
         //     'model' => "App\Models\Torneo" // foreign key model
         // ], 'update/create/both');

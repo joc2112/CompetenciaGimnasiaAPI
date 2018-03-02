@@ -9,9 +9,9 @@ class Torneo extends Model
 {
     use CrudTrait;
     /**
-     * Obtener todas las gimnastas de esta competencia
+     * Obtener todas las gimnastas de este torneo
      */
     public function gimnastas(){
-        return $this->hasMany('App\Models\Gimnasta');
+        return $this->belongsToMany('App\Models\Gimnasta');
     }
 }

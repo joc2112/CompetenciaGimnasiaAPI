@@ -42,9 +42,9 @@ Nombre
 1 ciudad tiene varias gimnastas
 1 ciudad tiene varios gimnasios
 
--- Modelo: Competencia --
+-- Modelo: Torneo --
 
-- COMPETENCIA GENERAL
+- TORNEO GENERAL
 Fecha
 Numero de participantes
 Lugar

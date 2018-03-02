@@ -42,10 +42,10 @@ class Gimnasta extends Model
         return $this->hasMany('App\Models\Calificacion');
     }
     /**
-     * Obtener la competencia de la gimnasta
+     * Obtener los torneos de la gimnasta
      */
-    public function competencia(){
-        return $this->belongsTo('App\Models\Torneo');
+    public function torneo(){
+        return $this->belongsToMany('App\Models\Toreno');
     }
 
     /**
