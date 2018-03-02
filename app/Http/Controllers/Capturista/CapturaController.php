@@ -17,7 +17,7 @@ class CapturaController extends Controller
     }
 
     /**
-     * Show the application dashboard.
+     * Mostrar la pagina principal para capturar.
      *
      * @return \Illuminate\Http\Response
      */

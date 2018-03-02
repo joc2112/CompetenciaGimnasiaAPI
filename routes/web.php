@@ -30,7 +30,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin'], 'namespace' => 'Ad
 Auth::routes();
 
 Route::get('/' , ['middleware' => 'auth', function () {
+    if(Auth::user()->hasRole("Admin")){
+        return redirect('/resultados');
+    }
     return redirect('/capturar');
+    
 }]);
 
 Route::group(['middleware' => ['auth'], 'namespace' => 'Capturista'], function(){
