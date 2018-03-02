@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Backpack\CRUD\CrudTrait;
 
-class CompetenciaGeneral extends Model
+class Torneo extends Model
 {
     use CrudTrait;
     /**

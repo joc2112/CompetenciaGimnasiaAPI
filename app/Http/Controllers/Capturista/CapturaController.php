@@ -44,7 +44,7 @@ class CapturaController extends Controller
     public function resultados(Models\Gimnasta $gimnasta)
     {
         // Obtener datos de la competencia
-        $competencia = Models\CompetenciaGeneral::find(env("COMPETENCIA_ID", 1));
+        $competencia = Models\Torneo::find(env("COMPETENCIA_ID", 1));
         return view('standings.resultados',["gimnasta" => $gimnasta, "competencia" => $competencia]);
     }
 
@@ -57,7 +57,7 @@ class CapturaController extends Controller
         // Obtener todas las gimnastas del mismo rango y nivel
         $gimnastas = Models\Gimnasta::where('nivel_id',$nivel->id)->where('rango_id', $rango->id)->get();
         // Obtener datos de la competencia
-        $competencia = Models\CompetenciaGeneral::find(env("COMPETENCIA_ID", 1));
+        $competencia = Models\Torneo::find(env("COMPETENCIA_ID", 1));
         return view('standings.resultados_nivel_rango',["gimnastas" => $gimnastas, "nivel" => $nivel, "rango" => $rango, "competencia" => $competencia]);;
     }
     

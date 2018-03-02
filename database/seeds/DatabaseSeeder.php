@@ -18,9 +18,9 @@ class DatabaseSeeder extends Seeder
         //     $u->posts()->save(factory(App\Models\Post::class)->make());
         // });
 
-        // Crear la competencia general
-        DB::table('competencia_generals')->insert([
-            'lugar' => "Puebla, Puebla",
+        // Crear el torneo
+        DB::table('torneos')->insert([
+            'cede' => "Puebla, Puebla",
             'fecha' => Carbon::now()->format('Y-m-d'),
             'nombre' => "Copa BUAP",
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),

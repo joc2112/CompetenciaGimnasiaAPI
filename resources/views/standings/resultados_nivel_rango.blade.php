@@ -8,7 +8,7 @@
         <div class="row">
             <div class="col-xs-9">
                 <h1> Competencia <b>{{$competencia->nombre}}</b></h1>
-                <h3>{{$competencia->lugar}}</h3>
+                <h3>{{$competencia->cede}}</h3>
                 <h3> {{$competencia->fecha}}</h3>
                 <br>
             </div>

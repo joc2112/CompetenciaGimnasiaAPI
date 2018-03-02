@@ -13,7 +13,7 @@
             </div>
             <div class="col-xs-4">
                 <h2> Competencia <b>{{$competencia->nombre}}</b></h2>
-                <h3>{{$competencia->lugar}}</h3>
+                <h3>{{$competencia->cede}}</h3>
                 <h3> {{$competencia->fecha}}</h3>
                 <br>
             </div>

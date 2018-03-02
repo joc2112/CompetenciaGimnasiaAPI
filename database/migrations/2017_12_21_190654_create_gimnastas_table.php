@@ -21,7 +21,7 @@ class CreateGimnastasTable extends Migration
             $table->date('fecha_nacimiento');
             $table->integer('nivel_id');
             $table->integer('rango_id');
-            $table->integer('competencia_general_id');
+            $table->integer('torneo_id');
             $table->timestamps();
         });
     }

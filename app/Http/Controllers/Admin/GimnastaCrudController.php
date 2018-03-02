@@ -36,10 +36,10 @@ class GimnastaCrudController extends CrudController
         $this->crud->addField([  // Select
             'label' => "Competencia",
             'type' => 'select',
-            'name' => 'competencia_general_id', // the db column for the foreign key
+            'name' => 'torneo_id', // the db column for the foreign key
             'entity' => 'competencia', // the method that defines the relationship in your Model
             'attribute' => 'fecha', // foreign key attribute that is shown to user
-            'model' => "App\Models\CompetenciaGeneral" // foreign key model
+            'model' => "App\Models\Torneo" // foreign key model
         ], 'update/create/both');
 
         // Campos automaticos, se generan automaticamente dependiendo de como este la table de bd
@@ -134,25 +134,25 @@ class GimnastaCrudController extends CrudController
 
         // Remover la columna del id de la competencia -- Temporalmente
         // TODO: Conectar el id con el year de la competencia
-        $this->crud->removeColumn('competencia_general_id');
+        // $this->crud->removeColumn('torneo_id');
         
         // Relacionar la fecha de la competencia
-        // $this->crud->setColumnDetails('competencia_general_id',[
+        // $this->crud->setColumnDetails('torneo_id',[
         //     'label' => "Competencia", // Table column heading
         //     'type' => 'select',
-        //     'name' => 'competencia_general_id', // the db column for the foreign key
+        //     'name' => 'torneo_id', // the db column for the foreign key
         //     'entity' => 'competencia', // the method that defines the relationship in your Model
         //     'attribute' => 'id', // foreign key attribute that is shown to user
-        //     'model' => "App\Models\CompetenciaGeneral" // foreign key model
+        //     'model' => "App\Models\Torneo" // foreign key model
         // ]);
         $this->crud->enableExportButtons();
         // $this->crud->addField([  // Select
         //     'label' => "Competencia",
         //     'type' => 'select',
-        //     'name' => 'competencia_general_id', // the db column for the foreign key
+        //     'name' => 'torneo_id', // the db column for the foreign key
         //     'entity' => 'competencia', // the method that defines the relationship in your Model
         //     'attribute' => 'fecha', // foreign key attribute that is shown to user
-        //     'model' => "App\Models\CompetenciaGeneral" // foreign key model
+        //     'model' => "App\Models\Torneo" // foreign key model
         // ], 'update/create/both');
         // $this->crud->setColumnDetails('gimnasio_id', ['attribute' => 'value']);
         // $this->crud->addColumns(); // add multiple columns, at the end of the stack
