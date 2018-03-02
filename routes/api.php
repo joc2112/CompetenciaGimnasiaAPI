@@ -26,7 +26,7 @@ Route::get('/gimnastas', function () {
 
 // Obtener una gimnasta en especifico con toda la informacion
 Route::get('/gimnastas/{gimnasta}', function (App\Models\Gimnasta $gimnasta) {
-    return $gimnasta->load('gimnasio','nivel', 'rango');
+    return $gimnasta->load('gimnasio','nivel', 'rango','torneos');
 });
 
 // Registrar una nueva gimnasta

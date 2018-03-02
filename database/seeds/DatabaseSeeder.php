@@ -2,7 +2,6 @@
 
 use Illuminate\Database\Seeder;
 
-use Carbon\Carbon;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,110 +12,27 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // Create 50 Users
-        // factory(App\Models\User::class, 50)->create()->each(function ($u) {
-        //     $u->posts()->save(factory(App\Models\Post::class)->make());
-        // });
 
-        // Crear el torneo
-        DB::table('torneos')->insert([
-            'cede' => "Puebla, Puebla",
-            'fecha' => Carbon::now()->format('Y-m-d'),
-            'nombre' => "Copa BUAP",
-            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
-        ]);
-        // Crear los Niveles y Rangos de edad
-        for($i = 1; $i <= 10; $i++){
-            if($i < 6){
-                DB::table('nivels')->insert([
-                    'nivel' => $i,
-                    'base' => 10,
-                    'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-                    'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
-                ]);
-            }else if($i == 6){
-                DB::table('nivels')->insert([
-                    'nivel' => $i,
-                    'base' => 16,
-                    'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-                    'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
-                ]);
-            }else{
-                DB::table('nivels')->insert([
-                    'nivel' => $i,
-                    'base' => 50,// No hay una base definida para niveles arriba de 6
-                    'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-                    'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
-                ]);
-            }
-        }
-        // Rangos son: 6-7, 8-9, 10-12, 13-15, 16+
-        DB::table('rangos')->insert([
-            'rango' => "6-7",
-            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
-            
-        ]);
-        DB::table('rangos')->insert([
-            'rango' => "8-9",
-            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
-        ]);
-        DB::table('rangos')->insert([
-            'rango' => "10-12",
-            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
-        ]);
-        DB::table('rangos')->insert([
-            'rango' => "13-15",
-            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
-        ]);
-        DB::table('rangos')->insert([
-            'rango' => "16+",
-            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
-        ]);
+        // Llamar al seeder que genera torneos
+        $torneo = new TorneoSeeder();
+        $torneo->run();
 
-        // Disciplinas (viga, piso, salto, barras)
-        DB::table('disciplinas')->insert([
-            'id' => "1",
-            'nombre' => "viga",
-            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
-        ]); 
-        DB::table('disciplinas')->insert([
-            'id' => "2",
-            'nombre' => "piso",
-            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
-        ]);
-        DB::table('disciplinas')->insert([
-            'id' => "3",
-            'nombre' => "salto",
-            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
-        ]);
-        DB::table('disciplinas')->insert([
-            'id' => "4",
-            'nombre' => "barras",
-            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
-        ]);
+        // Llamar al seeder que genera Datos de las competencias/torneos (niveles, rangos, etc)
+        $torneos_data = new TorneoDataSeeder();
+        $torneos_data->run();
 
-        // Crear mesas de juicio
-        factory(App\Models\MesaDeJuicio::class, 20)->create()->each(function($mesa) {
-            factory(App\Models\Juez::class, 4)->make()->each(function($juez) use ($mesa) {
-                 $mesa->jueces()->save($juez);
-            });
-        });
-        
+        // Llamar al seeder que genera las gimnastas
         $gimnastas = new GimnastaSeeder();
         $gimnastas->run();
-        // Llamar a los otros seeders 
+
+        // Llamar al seeder que genera calificaciones
         $calificaciones = new CalificacionesSeeder();
         $calificaciones->run();
+
+        // Llamar al seeder que genera usuarios y roles
+        $user_roles = new UserRolesSeeder();
+        $user_roles->run();
+
 
     }
 }

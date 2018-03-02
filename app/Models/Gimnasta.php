@@ -44,8 +44,8 @@ class Gimnasta extends Model
     /**
      * Obtener los torneos de la gimnasta
      */
-    public function torneo(){
-        return $this->belongsToMany('App\Models\Toreno');
+    public function torneos(){
+        return $this->belongsToMany('App\Models\Torneo');
     }
 
     /**
