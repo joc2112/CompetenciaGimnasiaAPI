@@ -49,6 +49,14 @@
                   <li><a href="/monitor"><i class="fa fa-desktop"></i> <span>Monitor All Around</span></a></li>
                 </ul>
               </li>
+              <li><a href="{{ route('select_torneo') }}"><i class="fa fa-exchange"></i>
+                    <span>Cambiar Torneo</span>
+                    <span class="pull-right-container">
+                      <small class="label pull-right bg-orange">CAMBIO!</small>
+                    </span>
+                  </a>
+              </li>
+              
             </ul>
           </li>
           

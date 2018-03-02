@@ -25,6 +25,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin'], 'namespace' => 'Ad
    CRUD::resource('juez', 'JuezCrudController');
    CRUD::resource('mesa', 'MesaDeJuicioCrudController');
    CRUD::resource('capturista', 'CapturistaCrudController');
+
+   // Ruta que muestra el formulario para crear un torneo
+   Route::get('/torneo/select', 'TorneoController@index')->name('select_torneo');
 });
 
 Auth::routes();
@@ -41,7 +44,7 @@ Route::group(['middleware' => ['auth'], 'namespace' => 'Capturista'], function()
     // Ruta principal de captura de calificaciones
     Route::get('/capturar', 'CapturaController@index')->name('home');
     // Real time standings
-    Route::get('/standings', 'CapturaController@standings')->name('standings');
+    Route::get('/monitor', 'CapturaController@standings')->name('monitor');
     // Ruta para los resultados de una gimnasta en especifico
     Route::get('/resultados/{gimnasta}', 'CapturaController@resultados')->name('resultados');
     // Ruta para resultados grupales

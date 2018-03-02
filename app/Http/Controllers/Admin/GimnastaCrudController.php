@@ -27,7 +27,20 @@ class GimnastaCrudController extends CrudController
         | BASIC CRUD INFORMATION
         |--------------------------------------------------------------------------
         */
-
+        // Filter for Torneo
+        $this->crud->addFilter([ // select2_multiple filter
+            'name' => 'torneo',
+            'type' => 'select2_multiple',
+            'label'=> 'Torneos'
+          ], function() { // the options that show up in the select2
+              return \App\Models\Torneo::all()->pluck('nombre', 'id')->toArray();
+          }, function($values) { // if the filter is active
+              foreach (json_decode($values) as $key => $value) {
+                  $this->crud->query = $this->crud->query->whereHas('torneos', function ($query) use ($value) {
+                      $query->where('torneo_id', $value);
+                  });
+              }
+          });
         
 
         // ------ CRUD FIELDS
@@ -124,14 +137,7 @@ class GimnastaCrudController extends CrudController
             'model' => "App\Models\Nivel" // foreign key model
         ]);
 
-        // Columna para accesar los resultados de la gimnasta
-        $this->crud->addColumn([
-            // run a function on the CRUD model and show its return value
-            'name' => "resultados",
-            'label' => "Resultados", // Table column heading
-            'type' => "model_function",
-            'function_name' => 'getResultadosLink', // the method in your Model
-         ]);
+
         // Remover el id del torneo, porque no es necesario
         $this->crud->removeColumn('torneo_id'); 
 
@@ -145,6 +151,15 @@ class GimnastaCrudController extends CrudController
             'attribute' => "nombre", // foreign key attribute that is shown to user
             'model' => "App\Models\Torneo", // foreign key model
         ]);
+
+        // Columna para accesar los resultados de la gimnasta
+        $this->crud->addColumn([
+            // run a function on the CRUD model and show its return value
+            'name' => "resultados",
+            'label' => "Resultados", // Table column heading
+            'type' => "model_function",
+            'function_name' => 'getResultadosLink', // the method in your Model
+            ]);
 
         $this->crud->enableExportButtons();
         // $this->crud->addField([  // Select
