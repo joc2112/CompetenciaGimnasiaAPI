@@ -35,5 +35,12 @@ class MesaDeJuicio extends Model
     */
     public function disciplina(){
         return $this->belongsTo('App\Models\Disciplina');
-    } 
+    }
+
+    /**
+     * Obtener el torneo de esta mesa de juicio
+     */
+    public function torneo(){
+        return $this->belongsTo('App\Models\Torneo');
+    }
 }

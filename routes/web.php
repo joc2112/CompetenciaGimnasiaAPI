@@ -17,7 +17,6 @@ Route::get('/', function () {
 
 Route::group(['prefix' => 'admin', 'middleware' => ['admin'], 'namespace' => 'Admin'], function()
 {
-   CRUD::resource('tag', 'TagCrudController');
    CRUD::resource('gimnasta', 'GimnastaCrudController');
    CRUD::resource('calificacion', 'CalificacionCrudController');
    CRUD::resource('gimnasio', 'GimnasioCrudController');
@@ -25,17 +24,21 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin'], 'namespace' => 'Ad
    CRUD::resource('juez', 'JuezCrudController');
    CRUD::resource('mesa', 'MesaDeJuicioCrudController');
    CRUD::resource('capturista', 'CapturistaCrudController');
+   CRUD::resource('torneo', 'TorneoCrudController');
 
    // Ruta que muestra el formulario para crear un torneo
-   Route::get('/torneo/select', 'TorneoController@index')->name('select_torneo');
+   Route::get('/torneo_select', 'TorneoController@index')->name('torneo.select');
 });
 
 Auth::routes();
 
 Route::get('/' , ['middleware' => 'auth', function () {
     if(Auth::user()->hasRole("Admin")){
-        return redirect('/resultados');
+        // Admin se redirige a la seleccion (o creacion si no hay alguno)
+        // de torneos
+        return redirect()->route('torneo.select');    
     }
+    // Cualquier otro, se redirije a la pagina para capturar
     return redirect('/capturar');
     
 }]);
@@ -50,6 +53,6 @@ Route::group(['middleware' => ['auth'], 'namespace' => 'Capturista'], function()
     // Ruta para resultados grupales
     Route::get('/resultados/{nivel}/{rango}', 'CapturaController@resultados_nivel_rango')->name('resultados_nivel_rango');
     // Ruta paa seleccionar el nivel y rango de edad de los resultados
-    Route::get('/resultados', 'CapturaController@resultados_form')->name('resultados_form');
+    Route::get('/resultados', 'CapturaController@resultados_form')->name('resultados.form');
 });
 

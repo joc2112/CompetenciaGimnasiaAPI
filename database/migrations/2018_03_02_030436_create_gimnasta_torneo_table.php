@@ -14,8 +14,10 @@ class CreateGimnastaTorneoTable extends Migration
     public function up()
     {
         Schema::create('gimnasta_torneo', function (Blueprint $table) {
+            $table->increments('id');
             $table->integer('gimnasta_id');
             $table->integer('torneo_id');
+            $table->timestamps();
         });
     }
 

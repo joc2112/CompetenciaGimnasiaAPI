@@ -22,4 +22,11 @@ class Juez extends Model
     {
         return $this->belongsToMany('App\Models\MesaDeJuicio', 'juez_mesa_juicio');
     }
+    
+    /**
+     * Obtener los torneos a los que este juez ha participado
+     */
+    public function torneos(){
+        return $this->belongsToMany('App\Models\Torneo');
+    }
 }

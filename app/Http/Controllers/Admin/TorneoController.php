@@ -13,6 +13,11 @@ class TorneoController extends Controller
      */
     public function index()
     {
+        // Si no existe ningun registro de algun torneo,
+        // redirigir a la pagina para crear nuevo torneo
+        if(Models\Torneo::count() == 0){
+            return redirect()->route('crud.torneo.create');    
+        }
         $torneos = Models\Torneo::all();
         return view("admin.select_torneo_form",["torneos" => $torneos]);
     }

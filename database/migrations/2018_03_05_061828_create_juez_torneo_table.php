@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMesaDeJuiciosTable extends Migration
+class CreateJuezTorneoTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreateMesaDeJuiciosTable extends Migration
      */
     public function up()
     {
-        Schema::create('mesa_de_juicios', function (Blueprint $table) {
+        Schema::create('juez_torneo', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('disciplina_id');
-            $table->integer('capturista_id');
+            $table->integer('juez_id');
             $table->integer('torneo_id');
             $table->timestamps();
         });
@@ -29,6 +28,6 @@ class CreateMesaDeJuiciosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('mesa_de_juicios');
+        Schema::dropIfExists('juez_torneo');
     }
 }
