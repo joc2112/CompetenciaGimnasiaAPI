@@ -1127,8 +1127,19 @@ Vue.component('resultados-component', __WEBPACK_IMPORTED_MODULE_2__components_Re
 
 Vue.component('v-select', __WEBPACK_IMPORTED_MODULE_3_vue_select___default.a);
 
-var app = new Vue({
+var VueApp = new Vue({
   el: '#app'
+});
+
+// Iniciar Websocket listener para el monmitor de resultados
+window.Echo.channel('calificaciones').listen('CalificacionPosted', function (e) {
+  // console.log(e);
+  // Agregar propiedades para que el componente las lea mas facil
+  e.calificacion.gimnasta = e.gimnasta;
+  e.calificacion.disciplina = e.disciplina;
+  // Agrregar al inicio del array (TODO BETTER)
+  var standings_component = VueApp.$children[0];
+  standings_component.standings.unshift(e.calificacion);
 });
 
 /***/ }),
@@ -43660,42 +43671,46 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 
-
 window.Pusher = __webpack_require__(45);
-
 window.Echo = new __WEBPACK_IMPORTED_MODULE_0_laravel_echo___default.a({
     broadcaster: 'pusher',
-    key: '67566193cf53436c2f26'
+    key: '67566193cf53436c2f26',
+    cluster: 'us2'
 });
+
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            standings: [{
-                aparato: "viga",
-                nombre: "Cami Rodriguez Sanchez",
-                calificacion: 12
-            }, {
-                aparato: "piso",
-                nombre: "Furi Wat Esteban",
-                calificacion: 15
-            }, {
-                aparato: "salto",
-                nombre: "Estefania Dominguez",
-                calificacion: 4
-            }]
+            standings: []
         };
     },
     mounted: function mounted() {
         var _this = this;
 
         console.log('Standings funcionando');
+
         // Listar los ultimos standings
         axios.get('/api/standings').then(function (response) {
-            return _this.standings = response.data;
+            _this.standings = response.data;
+            console.log(_this.standings);
         }).catch(function (error) {
             return console.log(error);
         });
+
+        // var channel = this.$pusher.subscribe('calificaciones');
+        // var vue_ins = this;
+        // channel.bind('CalificacionPosted', ({ event }) => {
+        //     vue_ins.standings.push(e.calificacion);
+        // });                
     }
+    // // Iniciar Websocket listener
+    // window.Echo.channel('calificaciones')
+    // .listen('CalificacionPosted', (e) => {
+    //     console.log(e);
+
+    // });
+    // console.log(VueApp);
+
 });
 
 /***/ }),
@@ -48702,9 +48717,9 @@ var render = function() {
             "tbody",
             _vm._l(_vm.standings, function(standing) {
               return _c("tr", [
-                _c("td", [_vm._v(_vm._s(standing.aparato))]),
+                _c("td", [_vm._v(_vm._s(standing.disciplina.nombre))]),
                 _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(standing.nombre))]),
+                _c("td", [_vm._v(_vm._s(standing.gimnasta.nombre))]),
                 _vm._v(" "),
                 _c("td", [_vm._v(_vm._s(standing.calificacion))])
               ])

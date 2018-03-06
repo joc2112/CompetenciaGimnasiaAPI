@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
-
+use App\Events\CalificacionPosted;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -150,9 +150,11 @@ Route::get('/calificaciones/{gimnasta}', function (App\Models\Gimnasta $gimnasta
 Route::post('/calificaciones', function (Request $request) {
     // Checar duplicados de calificaciones
     $calificacion = App\Models\Calificacion::where('juez_id',$request->juez_id)->where('gimnasta_id', $request->gimnasta_id)->where('disciplina_id',$request->disciplina_id)->get()->first();
-    // Si no existe, entonces crear una nueva
+    // Si no existe, entonces crear una nueva y notificar el evento
     if($calificacion == null){
         $calificacion = App\Models\Calificacion::firstOrCreate($request->all());
+        event(new CalificacionPosted($calificacion));
+        error_log('Calificacion registered');
     }
     return $calificacion;
 });
@@ -174,5 +176,17 @@ Route::get('/calificaciones/{nivel}/{rango}/', function (App\Models\Nivel $nivel
     }
     return $gimnastas;
 });
+// Obtener los standings de las ultimas 10 calificaciones
+Route::get('/standings', function () {
+    $calificaciones = App\Models\Calificacion::with('gimnasta','disciplina')->orderByDesc('id')->get()->take(10);
+    return $calificaciones;
+});
+
+// Obtener los standings de las ultimas n calificaciones
+Route::get('/standings/{limit}', function ($limit) {
+    $calificaciones = App\Models\Calificacion::with('gimnasta','disciplina')->orderByDesc('id')->get()->take($limit);
+    return $calificaciones;
+});
+
 
 

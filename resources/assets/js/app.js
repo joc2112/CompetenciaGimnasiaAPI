@@ -30,6 +30,19 @@ Vue.component('resultados-component', ResultadosComponent);
 import vSelect from 'vue-select'
 Vue.component('v-select', vSelect)
 
-const app = new Vue({
+const VueApp = new Vue({
     el: '#app'
 });
+
+// Iniciar Websocket listener para el monmitor de resultados
+window.Echo.channel('calificaciones')
+.listen('CalificacionPosted', (e) => {
+    // console.log(e);
+    // Agregar propiedades para que el componente las lea mas facil
+    e.calificacion.gimnasta = e.gimnasta;
+    e.calificacion.disciplina = e.disciplina;
+    // Agrregar al inicio del array (TODO BETTER)
+    let standings_component = VueApp.$children[0];
+    standings_component.standings.unshift(e.calificacion);
+});
+
