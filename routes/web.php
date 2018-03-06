@@ -28,6 +28,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin'], 'namespace' => 'Ad
 
    // Ruta que muestra el formulario para crear un torneo
    Route::get('/torneo_select', 'TorneoController@index')->name('torneo.select');
+
+   // Ruta para mandar el post del formulario de seleccionar un torneo
+   Route::post('/torneo_select', 'TorneoController@select')->name('torneo.select.post');
 });
 
 Auth::routes();

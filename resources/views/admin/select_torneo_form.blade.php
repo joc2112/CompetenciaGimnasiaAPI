@@ -6,27 +6,31 @@
 </div>
 
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-xs-4 col-md-offset-4">
-            <h1>Seleccionar Torneo</h1>
-            <select class="form-control lg" name="rango" id="rango">
-                @foreach ($torneos as $torneo)
-                    <option value="{{$torneo->id}}">{{$torneo->nombre}}</option>
-                @endforeach
-            </select>
-            <hr>
-            <!-- Submit button -->
-            <div class="row">
-                <div class="col-xs-12">
-                    <a href="#">
-                        <button type="button" onclick="goToLink()" class="btn btn-success btn-lg ladda-button">
-                            <span class="ladda-label"><i class="fa fa-plus"></i> Ir </span>
-                        </button>
-                    </a>
+    <h2>
+        <b> Torneo Actual: </b>  <i>{{ session('torneo_id', '2')->nombre }} </i>
+    </h2>
+    <form method="POST" action="{{ route('torneo.select.post') }}">
+        {{ csrf_field() }}
+        <div class="row">
+            <div class="col-xs-4 col-md-offset-4">
+                <h1>Seleccionar Torneo</h1>
+                <select class="form-control lg" name="torneo" id="torneo">
+                    @foreach ($torneos as $torneo)
+                        <option value="{{$torneo->id}}">{{$torneo->nombre}}</option>
+                    @endforeach
+                </select>
+                <hr>
+                <!-- Submit button -->
+                <div class="row">
+                    <div class="col-xs-12">
+                            <button type="submit" onclick="goToLink()" class="btn btn-success btn-lg ladda-button">
+                                <span class="ladda-label"><i class="fa fa-plus"></i> Ir </span>
+                            </button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    </form>
     <hr>
 
 </div>

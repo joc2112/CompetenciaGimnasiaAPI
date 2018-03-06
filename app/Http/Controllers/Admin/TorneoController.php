@@ -33,14 +33,17 @@ class TorneoController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Seleccionar un torneo para usar durante la session
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
+    public function select(Request $request)
+    {   
+        $torneo = Models\Torneo::find($request->torneo);
+        $request->session()->put('torneo_id', $torneo);
+        $torneos = Models\Torneo::all();
+        return view("admin.select_torneo_form",["torneos" => $torneos]);
     }
 
     /**
