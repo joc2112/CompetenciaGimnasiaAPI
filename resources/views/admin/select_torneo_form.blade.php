@@ -7,7 +7,7 @@
 
 <div class="container-fluid">
     <h2>
-        <b> Torneo Actual: </b>  <i>{{ session('torneo_id', '2')->nombre }} </i>
+        <b> Torneo Actual: </b>  <i>{{ session('torneo_id', App\Models\Torneo::find(1))->nombre }} </i>
     </h2>
     <form method="POST" action="{{ route('torneo.select.post') }}">
         {{ csrf_field() }}
