@@ -49,7 +49,7 @@ const VueApp = new Vue({
 
     // Iniciar Websocket listener para el monmitor de resultados
     var channel = pusher.subscribe('calificaciones');
-    channel.bind('App\\Events\\CalificacionPosted', function(data) {
+    channel.bind('App\\Events\\CalificacionPosted', function(e) {
         // console.log(e);
         // Agregar propiedades para que el componente las lea mas facil
         e.calificacion.gimnasta = e.gimnasta;
