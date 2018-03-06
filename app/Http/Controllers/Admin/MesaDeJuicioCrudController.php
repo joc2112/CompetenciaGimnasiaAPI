@@ -61,6 +61,15 @@ class MesaDeJuicioCrudController extends CrudController
         ], 'update/create/both');
 
         $this->crud->addField([
+            'label' => "Torneo", // Table column heading
+            'type' => "select2",
+            'name' => 'torneo_id', // the db column for the foreign key
+            'entity' => 'torneo', // the method that defines the relationship in your Model
+            'attribute' => 'nombre', // foreign key attribute that is shown to user
+            'model' => "App\Models\Torneo" // foreign key model
+        ], 'update/create/both');
+
+        $this->crud->addField([
             // n-n relationship (with pivot table)
             'label' => "Jueces", // Table column heading
             'type' => "select2_multiple",
@@ -92,6 +101,16 @@ class MesaDeJuicioCrudController extends CrudController
             'attribute' => 'nombre', // foreign key attribute that is shown to user
             'model' => "App\Models\Capturista" // foreign key model
         ]);        
+
+        //  Relacionar el torneo de la mesa
+        $this->crud->addColumn([
+            'label' => "Torneo", // Table column heading
+            'type' => "select",
+            'name' => 'torneo_id', // the db column for the foreign key
+            'entity' => 'torneo', // the method that defines the relationship in your Model
+            'attribute' => 'nombre', // foreign key attribute that is shown to user
+            'model' => "App\Models\Torneo" // foreign key model
+        ], 'update/create/both');
 
         // Relacionar la lista de jueces
         $this->crud->addColumn([
