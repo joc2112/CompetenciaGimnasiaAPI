@@ -36,7 +36,7 @@ const VueApp = new Vue({
 
 // Iniciar Websocket listener para el monmitor de resultados
 window.Echo.channel('calificaciones')
-.listen('.App\Events\CalificacionPosted', (e) => {
+.listen('App\\Events\\CalificacionPostedd', (e) => {
     // console.log(e);
     // Agregar propiedades para que el componente las lea mas facil
     e.calificacion.gimnasta = e.gimnasta;
@@ -45,4 +45,3 @@ window.Echo.channel('calificaciones')
     let standings_component = VueApp.$children[0];
     standings_component.standings.unshift(e.calificacion);
 });
-
