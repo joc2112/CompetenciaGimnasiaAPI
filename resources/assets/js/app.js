@@ -34,14 +34,27 @@ const VueApp = new Vue({
     el: '#app'
 });
 
-// Iniciar Websocket listener para el monmitor de resultados
-window.Echo.channel('calificaciones')
-.listen('App\\Events\\CalificacionPostedd', (e) => {
-    // console.log(e);
-    // Agregar propiedades para que el componente las lea mas facil
-    e.calificacion.gimnasta = e.gimnasta;
-    e.calificacion.disciplina = e.disciplina;
-    // Agrregar al inicio del array (TODO BETTER)
-    let standings_component = VueApp.$children[0];
-    standings_component.standings.unshift(e.calificacion);
-});
+
+// window.Echo.channel('calificaciones')
+// .listen('App\\Events\\CalificacionPosted', (e) => {
+
+// });
+
+    // Enable pusher logging - don't include this in production
+    window.Pusher.logToConsole = true;
+
+    var pusher = new Pusher('bf9e48920c9693e7aea5', {
+      encrypted: true
+    });
+
+    // Iniciar Websocket listener para el monmitor de resultados
+    var channel = pusher.subscribe('calificaciones');
+    channel.bind('App\\Events\\CalificacionPosted', function(data) {
+        // console.log(e);
+        // Agregar propiedades para que el componente las lea mas facil
+        e.calificacion.gimnasta = e.gimnasta;
+        e.calificacion.disciplina = e.disciplina;
+        // Agrregar al inicio del array (TODO BETTER)
+        let standings_component = VueApp.$children[0];
+        standings_component.standings.unshift(e.calificacion);
+    });
