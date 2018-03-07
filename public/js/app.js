@@ -43781,7 +43781,7 @@ exports = module.exports = __webpack_require__(45)(undefined);
 
 
 // module
-exports.push([module.i, "\n.list-enter-active, .list-leave-active {\n  -webkit-transition: all 1s;\n  transition: all 1s;\n}\n.list-enter, .list-leave-to /* .list-leave-active below version 2.1.8 */ {\n  opacity: 0;\n  -webkit-transform: translateY(30px);\n          transform: translateY(30px);\n}\n\n", ""]);
+exports.push([module.i, "\n.list-enter-active, .list-leave-active {\n  -webkit-transition: all 1s;\n  transition: all 1s;\n}\n.list-enter, .list-leave-to /* .list-leave-active below version 2.1.8 */ {\n  opacity: 0;\n  -webkit-transform: translateY(30px);\n          transform: translateY(30px);\n}\nh1{\n  font-size: 30px;\n  color: #030;\n  text-transform: uppercase;\n  font-weight: 300;\n  text-align: center;\n  margin-bottom: 15px;\n}\ntable{\n  width:100%;\n  table-layout: fixed;\n}\n.tbl-header{\n  background-color: rgba(255,255,255,0.3);\n}\n.tbl-content{\n  height:300px;\n  overflow-x:auto;\n  margin-top: 0px;\n  border: 1px solid rgba(255,255,255,0.3);\n}\nth{\n  padding: 20px 15px;\n  text-align: left;\n  font-weight: 500;\n  color: #066   ;\n  text-transform: uppercase;\n}\ntd{\n  padding: 15px;\n  text-align: left;\n  vertical-align:middle;\n  font-weight: 300;\n  color: #000;\n  border-bottom: solid 1px rgba(255,255,255,0.1);\n}\n\n\n", ""]);
 
 // exports
 
@@ -49216,7 +49216,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container-fluid" }, [
-    _c("h1", [_vm._v(" Standings ")]),
+    _c("h1", [_vm._v(" Monitor de todas las últimas calificaciones ")]),
     _vm._v(" "),
     _c("hr"),
     _vm._v(" "),

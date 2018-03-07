@@ -1,6 +1,6 @@
 <template>
     <div class="container-fluid">
-        <h1> Standings </h1>
+        <h1> Monitor de todas las últimas calificaciones </h1>
         <hr>
         <div class="row">
             <div class="col-xs-12">
@@ -87,6 +87,8 @@
         // console.log(VueApp);
     }
 
+  
+
 </script>
 
 <style>
@@ -97,5 +99,43 @@
   opacity: 0;
   transform: translateY(30px);
 }
+
+h1{
+  font-size: 30px;
+  color: #030;
+  text-transform: uppercase;
+  font-weight: 300;
+  text-align: center;
+  margin-bottom: 15px;
+}
+table{
+  width:100%;
+  table-layout: fixed;
+}
+.tbl-header{
+  background-color: rgba(255,255,255,0.3);
+ }
+.tbl-content{
+  height:300px;
+  overflow-x:auto;
+  margin-top: 0px;
+  border: 1px solid rgba(255,255,255,0.3);
+}
+th{
+  padding: 20px 15px;
+  text-align: left;
+  font-weight: 500;
+  color: #066   ;
+  text-transform: uppercase;
+}
+td{
+  padding: 15px;
+  text-align: left;
+  vertical-align:middle;
+  font-weight: 300;
+  color: #000;
+  border-bottom: solid 1px rgba(255,255,255,0.1);
+}
+
 
 </style>
