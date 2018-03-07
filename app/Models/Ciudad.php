@@ -9,6 +9,11 @@ class Ciudad extends Model
 {
     use CrudTrait;
     /**
+     * Campos disponibles para Mass Assigment
+     */
+    protected $fillable = ['ciudad', 'estado'];
+
+    /**
      * Obtener la lista de gimnasios de esta ciudad
      */
     public function gimnasios()
