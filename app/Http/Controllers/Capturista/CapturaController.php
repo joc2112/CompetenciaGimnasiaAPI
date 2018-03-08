@@ -44,20 +44,34 @@ class CapturaController extends Controller
     public function resultados(Models\Gimnasta $gimnasta)
     {
         // Obtener datos del torneo
-        $torneo = Models\Torneo::find(env("TORNEO_ID", 1));
+        $torneo = session('torneo_id', Models\Torneo::find(1));
         return view('standings.resultados',["gimnasta" => $gimnasta, "torneo" => $torneo]);
     }
 
     /**
      * Mostrar las calificaciones promedio de las gimnastas del nivel y rango dado
+     * Y del torneo seleccionado en la session
      *
      * @return \Illuminate\Http\Response
      */
     public function resultados_nivel_rango(Models\Nivel $nivel, Models\Rango $rango) {
-        // Obtener todas las gimnastas del mismo rango y nivel
-        $gimnastas = Models\Gimnasta::where('nivel_id',$nivel->id)->where('rango_id', $rango->id)->get();
+        
         // Obtener datos del torneo
-        $torneo = Models\Torneo::find(env("TORNEO_ID", 1));
+        $torneo = session('torneo_id', Models\Torneo::find(1));
+
+        // Obtener todas las gimnastas del mismo rango y nivel 
+        
+        $gimnastas = Models\Gimnasta::where('nivel_id',$nivel->id)
+                                    ->where('rango_id', $rango->id)->get();
+        
+        // Filtrar solo las gimnastas registradas en en el torneo seleccionado
+        $gimnastas_final = collect([]);
+        foreach ($gimnastas as $gimnasta) {
+            if($gimnasta->torneos->contains($torneo)){
+                $gimnastas_final->push($gimnasta);
+            }
+        }
+        $gimnastas = $gimnastas_final;
         return view('standings.resultados_nivel_rango',["gimnastas" => $gimnastas, "nivel" => $nivel, "rango" => $rango, "torneo" => $torneo]);;
     }
     

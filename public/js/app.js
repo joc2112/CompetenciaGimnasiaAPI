@@ -49334,10 +49334,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['gimnasta'],
+    props: ['gimnasta', 'individual'],
     data: function data() {
         return {
             resultados: null,
@@ -49371,13 +49372,15 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _vm.resultados
     ? _c("tr", [
-        _c("td", [
-          _c(
-            "a",
-            { attrs: { id: _vm.resultados.gimnasta.id, href: _vm.link } },
-            [_vm._v(_vm._s(_vm.resultados.gimnasta.nombre))]
-          )
-        ]),
+        _vm.individual
+          ? _c("td", [_vm._v(_vm._s(_vm.resultados.gimnasta.nombre))])
+          : _c("td", [
+              _c(
+                "a",
+                { attrs: { id: _vm.resultados.gimnasta.id, href: _vm.link } },
+                [_vm._v(_vm._s(_vm.resultados.gimnasta.nombre))]
+              )
+            ]),
         _vm._v(" "),
         _c("td", [_vm._v(_vm._s(_vm.resultados.gimnasta.id))]),
         _vm._v(" "),

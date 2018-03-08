@@ -34,7 +34,7 @@
                     <tbody>
                         @foreach ($gimnastas as $gimnasta)
                             <!-- Use "is" property to render Vue component -->
-                            <tr is="resultados-component" :gimnasta="{{$gimnasta}} "></tr>
+                            <tr is="resultados-component" :individual="false" :gimnasta="{{$gimnasta}} "></tr>
                         @endforeach
                     </tbody>
                 </table>

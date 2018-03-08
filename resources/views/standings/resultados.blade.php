@@ -12,7 +12,7 @@
                 <h2>Rango de edad: <b><i>{{$gimnasta->rango->rango}}</b></i></h2>
             </div>
             <div class="col-xs-4">
-                <h2> torneo <b>{{$torneo->nombre}}</b></h2>
+                <h2> Torneo: <b>{{$torneo->nombre}}</b></h2>
                 <h3>{{$torneo->cede}}</h3>
                 <h3> {{$torneo->fecha}}</h3>
                 <br>
@@ -34,7 +34,7 @@
 
                     </thead>
                     <tbody>
-                        <tr is="resultados-component" :gimnasta="{{$gimnasta}} "></tr>
+                        <tr is="resultados-component" :individual="true" :gimnasta="{{$gimnasta}} "></tr>
                     </tbody>
                 </table>
             </div>
