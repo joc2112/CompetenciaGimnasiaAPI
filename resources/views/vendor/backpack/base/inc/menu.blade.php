@@ -3,9 +3,7 @@
         <!-- =================================================== -->
         <!-- ========== Top menu items (ordered left) ========== -->
         <!-- =================================================== -->
-
-        <!-- <li><a href="{{ url('/') }}"><i class="fa fa-home"></i> <span>Home</span></a></li> -->
-
+        <li><a><span>Torneo Seleccionado: <b>{{session('torneo_id', App\Models\Torneo::find(1))->nombre}}</b></span></a></li>
         <!-- ========== End of top menu left items ========== -->
     </ul>
 </div>
