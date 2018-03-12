@@ -138,6 +138,28 @@ Gimnasia
 
 
 ====
+/// TODOS ///
+
+// Admin
+- Si no hay registradas en el torneo seleccionado:
+	-Register gimnasios
+	-Register gimnastas
+	-Register jueces
+	-Register mesas de juicio
+
+- Mostrar solo un menu de torneo, registrar solo un torneo.
+- No permitir crear nuevos Torneos
+- Mezclar las calificiaciones en el monitor
+
+// Capturista
+
+- Colocar iconos
+- Cargar mesas de juicios con sus jueces
+
+
+
+
+
 
 
 
