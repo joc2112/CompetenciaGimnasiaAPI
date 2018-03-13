@@ -12,6 +12,14 @@ use App\Events\CalificacionPosted;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+// if (strstr($_SERVER['HTTP_REFERER'], "micro-tec.com.mx")){
+//     if (isset($_SERVER['HTTP_ORIGIN'])){
+//         header("Access-Control-Allow-Origin: {$_SERVER['HTTP_ORIGIN']}");
+//         header('Access-Control-Allow-Credentials: true');
+//         header('Access-Control-Allow-Methods: GET, POST');
+//         header('Access-Control-Max-Age: 86400');
+//     }
+// }
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
