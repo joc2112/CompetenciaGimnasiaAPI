@@ -26,17 +26,35 @@
           <li class="treeview">
             <a href="#">
               <i class="fa fa-trophy"></i>
-              <span>Torneo Actual</span>
+              <span>Torneo</span>
               <span class="pull-right-container">
                 <small class="label pull-right bg-green">Nuevo!</small>
               </span>
             </a>
             <ul class="treeview-menu">
+              <!-- Gimnastas-->
+              @if (App\Models\Gimnasta::count() == 0)
+              <li><a href="{{ route('crud.gimnasta.create') }}"><i class="fa fa-female"></i> <span>Gimnastas</span></a></li>
+              @else
               <li><a href="{{ backpack_url('gimnasta') }}"><i class="fa fa-female"></i> <span>Gimnastas</span></a></li>
+              @endif
+              <!-- Calificaciones-->
               <li><a href="{{ backpack_url('calificacion') }}"><i class="fa fa-check"></i> <span>Calificaciones capturadas</span></a></li>
+              <!-- Gimnasios-->
+              @if (App\Models\Gimnasio::count() == 0)
+              <li><a href="{{ route('crud.gimnasio.create') }}"><i class="fa fa-home"></i> <span>Gimnacios</span></a></li>
+              @else
               <li><a href="{{ backpack_url('gimnasio') }}"><i class="fa fa-home"></i> <span>Gimnacios</span></a></li>
+              @endif
+              <!-- Ciudades-->
               <li><a href="{{ backpack_url('ciudad') }}"><i class="fa fa-globe"></i> <span>Ciudades</span></a></li>
+              <!-- Jueces-->
+              @if (App\Models\Gimnasio::count() == 0)
+              <li><a href="{{ route('crud.juez.create') }}"><i class="fa fa-pencil-square-o"></i> <span>Jueces</span></a></li>
+              @else
               <li><a href="{{ backpack_url('juez') }}"><i class="fa fa-pencil-square-o"></i> <span>Jueces</span></a></li>
+              @endif
+              <!-- Mesas de Juicio-->
               <li><a href="{{ backpack_url('mesa') }}"><i class="fa fa-table"></i> <span>Mesas de Juicio</span></a></li>
               <li class="treeview">
                 <a href="#">
@@ -51,7 +69,9 @@
                   <li><a href="/monitor"><i class="fa fa-desktop"></i> <span>Monitor All Around</span></a></li>
                 </ul>
               </li>
+              
               <li><a href="{{ backpack_url('torneo') }}"><i class="fa fa-wrench"></i> <span>Otros torneos</span></a></li>
+              <!--
               <li>
                   <a href="{{ route('torneo.select') }}">
                     <i class="fa fa-exchange"></i>
@@ -61,6 +81,7 @@
                     </span>
                   </a>
               </li>
+              -->
               
             </ul>
           </li>
@@ -81,8 +102,9 @@
               <li><a href="{{ backpack_url('permission') }}"><i class="fa fa-key"></i> <span>Permisos</span></a></li>
             </ul>
           </li>
+          <!--/ Fin de control de usuarios -->
 
-          <!-- Links del torneo Seleccionado -->
+          <!-- Links de todos los torneos
           <li class="treeview">
             <a href="#">
               <i class="fa fa-globe"></i>
@@ -116,8 +138,10 @@
               
             </ul>
           </li>
+           -->
+          <!--/ Fin de todos los torneos -->
 
-          <!--/ Fin de control de usuarios -->
+          
           
           <!-- ======================================= -->
           {{-- <li class="header">Other menus</li> --}}

@@ -56,7 +56,7 @@ class TorneoCrudController extends CrudController
 
         // ------ CRUD ACCESS
         // $this->crud->allowAccess(['list', 'create', 'update', 'reorder', 'delete']);
-        // $this->crud->denyAccess(['list', 'create', 'update', 'reorder', 'delete']);
+        $this->crud->denyAccess(['create', 'delete']);
 
         // ------ CRUD REORDER
         // $this->crud->enableReorder('label_name', MAX_TREE_LEVEL);

@@ -11,8 +11,8 @@ class TorneoSeeder extends Seeder
      */
     public function run()
     {
-        // Crear multiples torneos
-        factory(App\Models\Torneo::class, 5)->create();
+        // Crear Solo un torneo de prueba
+        factory(App\Models\Torneo::class, 1)->create();
         
     }
 }
