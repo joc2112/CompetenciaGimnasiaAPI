@@ -49,7 +49,7 @@
               <!-- Ciudades-->
               <li><a href="{{ backpack_url('ciudad') }}"><i class="fa fa-globe"></i> <span>Ciudades</span></a></li>
               <!-- Jueces-->
-              @if (App\Models\Gimnasio::count() == 0)
+              @if (App\Models\Juez::count() == 0)
               <li><a href="{{ route('crud.juez.create') }}"><i class="fa fa-pencil-square-o"></i> <span>Jueces</span></a></li>
               @else
               <li><a href="{{ backpack_url('juez') }}"><i class="fa fa-pencil-square-o"></i> <span>Jueces</span></a></li>
