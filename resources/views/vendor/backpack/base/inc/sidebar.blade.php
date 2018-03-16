@@ -47,7 +47,12 @@
               <li><a href="{{ backpack_url('gimnasio') }}"><i class="fa fa-home"></i> <span>Gimnacios</span></a></li>
               @endif
               <!-- Ciudades-->
+              @if (App\Models\Ciudad::count() == 0)
+              <li><a href="{{ route('crud.ciudad.create') }}"><i class="fa fa-globe"></i> <span>Ciudades</span></a></li>
+              @else
               <li><a href="{{ backpack_url('ciudad') }}"><i class="fa fa-globe"></i> <span>Ciudades</span></a></li>
+              @endif
+              
               <!-- Jueces-->
               @if (App\Models\Juez::count() == 0)
               <li><a href="{{ route('crud.juez.create') }}"><i class="fa fa-pencil-square-o"></i> <span>Jueces</span></a></li>

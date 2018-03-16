@@ -39,7 +39,7 @@ Route::get('/' , ['middleware' => 'auth', function () {
     if(Auth::user()->hasRole("Admin")){
         // Admin se redirige a la seleccion (o creacion si no hay alguno)
         // de torneos
-        return redirect()->route('torneo.select');    
+        return redirect()->route('backpack.dashboard');    
     }
     // Cualquier otro, se redirije a la pagina para capturar
     return redirect('/capturar');
