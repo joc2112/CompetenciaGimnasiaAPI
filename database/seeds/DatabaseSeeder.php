@@ -23,11 +23,11 @@ class DatabaseSeeder extends Seeder
 
         // Llamar al seeder que genera las gimnastas
         $gimnastas = new GimnastaSeeder();
-        $gimnastas->run();
+        // $gimnastas->run();
 
         // Llamar al seeder que genera calificaciones
         $calificaciones = new CalificacionesSeeder();
-        $calificaciones->run();
+        // $calificaciones->run();
 
         // Llamar al seeder que genera usuarios y roles
         $user_roles = new UserRolesSeeder();

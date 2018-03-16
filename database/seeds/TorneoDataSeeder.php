@@ -92,10 +92,10 @@ class TorneoDataSeeder extends Seeder
         ]);
 
         // Crear mesas de juicio
-        factory(App\Models\MesaDeJuicio::class, 20)->create()->each(function($mesa) {
-            factory(App\Models\Juez::class, 4)->make()->each(function($juez) use ($mesa) {
-                 $mesa->jueces()->save($juez);
-            });
-        });
+        // factory(App\Models\MesaDeJuicio::class, 20)->create()->each(function($mesa) {
+        //     factory(App\Models\Juez::class, 4)->make()->each(function($juez) use ($mesa) {
+        //          $mesa->jueces()->save($juez);
+        //     });
+        // });
     }
 }
